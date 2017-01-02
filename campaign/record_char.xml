@@ -56,6 +56,10 @@
 				<static textres="char_label_name" />
 			</label_charframetop>
 			
+			<stringu name="name">
+				<anchored to="nametitle" position="insidetop" offset="0,25" height="20" />
+			</stringu>
+			
 		</sheetdata>
 		
 	</windowclass>
