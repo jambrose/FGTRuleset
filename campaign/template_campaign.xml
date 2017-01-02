@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="masterindex" merge="join">
+		<sheetdata>
+			<masterindex_list name="list">
+				<anchored>
+					<bottom offset="-70" />
+				</anchored>
+			</masterindex_list>
+		</sheetdata>
+	</windowclass>
+
+	<template name="sub_record_header">
+		<subwindow>
+			<anchored>
+				<top offset="10" />
+				<left offset="10" />
+				<right offset="-25" />
+			</anchored>
+			<frame name="headergray" offset="5,5,20,5" />
+			<activate />
+		</subwindow>
+	</template>
+	<template name="sub_alt_header">
+		<subwindow>
+			<anchored>
+				<top offset="10" />
+				<left offset="10" />
+				<right offset="-25" />
+			</anchored>
+			<frame name="headergray" offset="5,5,20,5" />
+			<activate />
+		</subwindow>
+	</template>
+	<template name="frame_record_content">
+		<genericcontrol name="contentframe">
+			<anchored>
+				<top parent="header" anchor="bottom" offset="7" />
+				<left offset="15" />
+				<right offset="-20" />
+				<bottom offset="-20" />
+			</anchored>
+			<disabled />
+		</genericcontrol>
+	</template>
+	<template name="frame_record_content_tabbed">
+		<genericcontrol name="contentframe">
+			<anchored>
+				<top parent="header" anchor="bottom" offset="7" />
+				<left offset="15" />
+				<right offset="-30" />
+				<bottom offset="-20" />
+			</anchored>
+			<disabled />
+		</genericcontrol>
+	</template>
+	<template name="area_parcel_content">
+		<genericcontrol name="contentframe">
+			<anchored>
+				<top parent="header" anchor="bottom" offset="22" />
+				<left offset="25" />
+				<right offset="-25" />
+				<bottom offset="-25" />
+			</anchored>
+			<disabled />
+		</genericcontrol>
+	</template>
+	<template name="frame_parcel">
+		<genericcontrol>
+			<frame name="groupbox" offset="15,15,20,15" />
+		</genericcontrol>
+	</template>
+	
+	<template name="button_toggledetail">
+		<buttoncontrol>
+			<anchored width="20" height="20" />
+			<state icon="details" />
+			<state icon="details_down" />
+			<script>
+				function onValueChanged()
+					if window.toggleDetail then
+						window.toggleDetail();
+					end
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+	
+	<template name="label_abilityscore">
+		<label_fieldtop>
+			<anchored offset="-2,-6" />
+			<frame name="abilityscore" />
+		</label_fieldtop>
+	</template>
+	<template name="number_abilityscore">
+		<basicnumber>
+			<default>10</default>
+			<script file="campaign/scripts/number_abilityscore.lua" />
+		</basicnumber>
+	</template>
+	<template name="string_abilitymodtext">
+		<stringcontrol>
+			<anchored position="below" offset="-8,-5" />
+			<frame name="abilityscore" />
+			<font>sheetlabelmini</font>
+			<static />
+			<center />
+		</stringcontrol>
+	</template>
+
+	<template name="label_npc_abilityscore">
+		<label_abilityscore />
+	</template>
+	<template name="number_npc_abilityscore">
+		<number_abilityscore />
+	</template>
+	<template name="string_npc_abilitymodtext">
+		<string_abilitymodtext />
+	</template>
+	<template name="string_column_npc_remainder">
+		<basicstring>
+			<anchored position="righthigh" offset="10,0" height="20">
+				<right parent="" offset="-5" />
+			</anchored>
+		</basicstring>
+	</template>
+	<template name="string_columnh_npc_specialdef">
+		<string_columnh>
+			<anchored>
+				<left offset="140"/>
+			</anchored>
+		</string_columnh>
+	</template>
+	<template name="button_npcabilitycheck">
+		<buttoncontrol>
+			<anchored position="righthigh" offset="5,0" width="15" height="15" />
+			<state frame="abilityscore" text="C" font="" />
+			<script>
+				function action(draginfo)
+					local rActor = ActorManager.getActor("", window.getDatabaseNode());
+					ActionCheck.performRoll(draginfo, rActor, self.target[1]);
+					return true;
+				end
+
+				function onDragStart(button, x, y, draginfo)
+					action(draginfo);
+					return true;
+				end
+				
+				function onButtonPress()
+					action();
+					return true;
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+	<template name="button_npcabilitysave">
+		<buttoncontrol>
+			<anchored position="righthigh" offset="5,15" width="15" height="15" />
+			<state frame="abilityscore" text="S" font="" />
+			<script>
+				function action(draginfo)
+					local rActor = ActorManager.getActor("", window.getDatabaseNode());
+					ActionSave.performRoll(draginfo, rActor, self.target[1]);
+					return true;
+				end
+
+				function onDragStart(button, x, y, draginfo)
+					action(draginfo);
+					return true;
+				end
+				
+				function onButtonPress()
+					action();
+					return true;
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+	<template name="list_npcactions">
+		<windowlist>
+			<anchored>
+				<top parent="columnanchor" anchor="bottom" relation="relative" offset="7" />
+				<left offset="0" />
+				<right offset="-5" />
+			</anchored>
+			<allowcreate />
+			<allowdelete />
+			<noscroll />
+			<script file="common/scripts/list_text.lua" />
+		</windowlist>
+	</template>
+
+	<template name="button_enc_refreshcr">
+		<buttoncontrol>
+			<anchored width="23" height="23">
+				<bottom parent="cr" offset="2" />
+				<left parent="cr" anchor="right" offset="5"/>
+			</anchored>
+			<icon normal="button_enc_refreshcr" pressed="button_enc_refreshcr_down" />
+			<tooltip textres="enc_tooltip_refreshcr" />
+			<script>
+				function onButtonPress()
+					window.button_refreshxp.onButtonPress();
+					iXP = window.exp.getValue();
+					sCR = "";
+								
+					if iXP &lt;= 10 then
+						sCR = "0";
+					elseif iXP &lt;= 25 then
+						sCR = "1/8";
+					elseif iXP &lt;= 50 then
+						sCR = "1/4";
+					elseif iXP &lt;= 100 then
+						sCR = "1/2";
+					elseif iXP &lt;= 200 then
+						sCR = "1";
+					elseif iXP &lt;= 450 then
+						sCR = "2";
+					elseif iXP &lt;= 700 then
+						sCR = "3";
+					elseif iXP &lt;= 1100 then
+						sCR = "4";
+					elseif iXP &lt;= 1800 then
+						sCR = "5";
+					elseif iXP &lt;= 2300 then
+						sCR = "6";
+					elseif iXP &lt;= 2900 then
+						sCR = "7";
+					elseif iXP &lt;= 3900 then
+						sCR = "8";
+					elseif iXP &lt;= 5000 then
+						sCR = "9";
+					elseif iXP &lt;= 5900 then
+						sCR = "10";
+					elseif iXP &lt;= 7200 then
+						sCR = "11";
+					elseif iXP &lt;= 8400 then
+						sCR = "12";
+					elseif iXP &lt;= 10000 then
+						sCR = "13";
+					elseif iXP &lt;= 11500 then
+						sCR = "14";
+					elseif iXP &lt;= 13000 then
+						sCR = "15";
+					elseif iXP &lt;= 15000 then
+						sCR = "16";
+					elseif iXP &lt;= 18000 then
+						sCR = "17";
+					elseif iXP &lt;= 20000 then
+						sCR = "18";
+					elseif iXP &lt;= 22000 then
+						sCR = "19";
+					elseif iXP &lt;= 25000 then
+						sCR = "20";
+					elseif iXP &lt;= 33000 then
+						sCR = "21";
+					elseif iXP &lt;= 41000 then
+						sCR = "22";
+					elseif iXP &lt;= 50000 then
+						sCR = "23";
+					elseif iXP &lt;= 62000 then
+						sCR = "24";
+					elseif iXP &lt;= 75000 then
+						sCR = "25";
+					elseif iXP &lt;= 90000 then
+						sCR = "26";
+					elseif iXP &lt;= 105000 then
+						sCR = "27";
+					elseif iXP &lt;= 120000 then
+						sCR = "28";
+					elseif iXP &lt;= 135000 then
+						sCR = "29";
+					elseif iXP &lt;= 155000 then
+						sCR = "30";
+					else
+						sCR = "?";
+					end
+					
+					window.cr.setValue(sCR);
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+	<template name="button_enc_refreshxp">
+		<buttoncontrol>
+			<anchored width="23" height="23">
+				<bottom parent="exp" offset="2" />
+				<left parent="exp" anchor="right" offset="5" />
+			</anchored>
+			<icon normal="button_enc_refreshxp" pressed="button_enc_refreshxp_down" />
+			<tooltip textres="enc_tooltip_refreshxp" />
+			<script>
+				function onButtonPress()
+					local w = Interface.findWindow("battle", window.getDatabaseNode());
+					local nXP = 0;
+					if w then
+						for _,v in pairs(w.npcs.getWindows()) do
+							local nodeNPC = v.link.getTargetDatabaseNode();
+							if nodeNPC then
+								nXP = nXP + v.count.getValue() * DB.getValue(nodeNPC, "xp", 0);
+							else
+								local sMsg = string.format(Interface.getString("enc_message_refreshxp_missingnpclink"), v.name.getValue());
+								ChatManager.SystemMessage(sMsg);
+							end
+						end
+					end
+					window.exp.setValue(nXP);
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+
+	<template name="list_editor">
+		<windowlist name="list">
+			<anchored>
+				<top parent="columnanchor" anchor="bottom" relation="relative" offset="20" />
+				<left />
+				<right />
+			</anchored>
+			<allowdelete />
+			<child><backcolor>1A40301E</backcolor></child>
+			<child></child>
+			<noscroll />
+			<script>
+				function onInit()
+					registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
+				end
+				
+				function onMenuSelection(selection)
+					if selection == 5 then
+						self.addEntry(true);
+					end
+				end
+				
+				function onListChanged()
+					update();
+				end
+
+				function update()
+					local bEditMode = (window.list_iedit.getValue() == 1);
+					for _,w in pairs(getWindows()) do
+						w.idelete.setVisibility(bEditMode);
+					end
+				end
+				
+				function addEntry(bFocus)
+					return createWindow();
+				end
+			</script>
+		</windowlist>
+	</template>
+	
+	<template name="sub_charsheet">
+		<subwindow>
+			<anchored to="contentanchor">
+				<top parent="name" anchor="bottom" offset="2" />
+				<left />
+				<right />
+				<bottom parent="" offset="-20" />
+			</anchored>
+		</subwindow>
+	</template>
+</root>

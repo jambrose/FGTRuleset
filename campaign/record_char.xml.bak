@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+
+	<windowclass name="charsheet">
+		<frame>charsheet</frame>
+		<placement>
+			<size width="525" height="600" />
+		</placement>
+		<sizelimits>
+			<minimum width="450" height="570" />
+			<dynamic />
+		</sizelimits>
+		<softclose />
+		<nodelete />
+		<playercontrol />
+		<minimize>minimized_char</minimize>
+		<tooltip field="name" />
+		<script file="campaign/scripts/char.lua" />
+		<sheetdata>
+			<!-- From common\template_windows.xml -->
+			<anchor_title_charsheet name="contentanchor" />
+			
+			<!-- From CoreRPG -->
+			<button_charactivate>
+				<anchored to="contentanchor" position="belowright" offset="0,5" width="23" height="22" />
+			</button_charactivate>		
+			<token_char name="token">
+				<anchored to="contentanchor" position="belowright" offset="25,6" width="45" height="45" />
+			</token_char>
+			<!-- Character Portrait Generic? -->
+			<genericcontrol>
+				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
+				<icon>charlist_base</icon> <!-- From CoreRPG\graphics\graphics_portraits.xml -->
+				<disabled />
+			</genericcontrol>
+			<!-- Local Portrait From CoreRPG\campaign\template_char.xml -->
+			<portrait_charlocal name="localportrait">
+				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
+				<invisible />
+			</portrait_charlocal>
+		</sheetdata>
+		
+	</windowclass>
+</root>

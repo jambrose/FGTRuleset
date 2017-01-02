@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+
+	<!-- Override CoreRPG ruleset graphics -->
+
+	<!-- Desktop background -->
+	<framedef name="desktop">
+		<bitmap file="graphics/frames/desktop.png" />
+		<topleft rect="0,0,5,145" />
+		<left rect="0,145,5,300" />
+		<bottomleft rect="0,445,5,5" />
+		<top rect="5,0,300,145" />
+		<middle rect="5,145,300,300" />
+		<bottom rect="5,445,300,5" />
+		<topright rect="305,0,395,145" />
+		<right rect="305,145,395,300" />
+		<bottomright rect="305,445,395,5" />
+	</framedef>
+
+</root>
