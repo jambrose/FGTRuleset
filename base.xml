@@ -6,12 +6,13 @@
 -->
 
 <root version="3.0" release="1" logo="logo.png">
-	<announcement text="Ruleset v0.1.1 for Mongoose Traveller v.2 \rCopyright 2016 Mongoose Publishing" font="emotefont" icon="rulesetlogo_CoreRPG" />
+	<announcement text="Ruleset v0.1.1 for Mongoose Traveller v.2 \rCopyright 2016 Mongoose Publishing" font="emotefont" icon="rulesetlogo_TravellerRPG" />
 
 	<!-- Attributes -->
 	<description>
 		<text>Traveller RPG</text>
-		<author>Mongoose Publishing</author>
+		<author>Jack Ambrose</author>
+		<text>Classic/Mongoose Traveller 2E: Science-Fiction Adventure in the Far Future</text>
 		<website>http://www.mongoosepublishing.com</website>
 	</description>
 	

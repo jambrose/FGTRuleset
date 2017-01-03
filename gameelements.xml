@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<distance>
+		<base>5</base>
+		<diagmult>1</diagmult>
+		<suffix>'</suffix>
+	</distance>
+
+	<die name="d100">
+		<icon>d10icon</icon>
+	</die>
+
+	<die name="dmdie">
+		<icon>dmdieicon</icon>
+	</die>
+
+	<customdie name="d2">
+	<model>d4</model>
+	<menuicon>customdice</menuicon>
+	<script>
+	  function onValue(result)
+		return math.ceil(result/2);
+	  end
+	</script>
+	</customdie>
+
+	<customdie name="d3">
+	<model>d6</model>
+	<menuicon>customdice</menuicon>
+	<script>
+	  function onValue(result)
+		return math.ceil(result/2);
+	  end
+	</script>
+	</customdie>
+
+	<customdie name="m6">
+	<model>d6</model>
+	<menuicon>customdice</menuicon>
+	<script>
+	  function onValue(result)
+		return -result;
+	  end
+	</script>
+	</customdie>
+	
+	<hotkeybar>
+		<title frame="hotkeytitlebox" frameoffset="2,-2,5,2" margin="2,5" font="hotkey" />
+	</hotkeybar>
+</root>
