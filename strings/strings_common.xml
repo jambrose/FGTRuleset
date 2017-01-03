@@ -289,28 +289,20 @@
 	<!-- Character - Notes -->
 	<string name="char_notes_title">NOTES</string>
 	<string name="char_label_notes_traits">PERSONALITY TRAITS</string>
-	<string name="char_label_notes_ideals">IDEALS</string>
 	<string name="char_label_notes_allies">ALLIES, CONTACTS, ENEMIES, RIVALS</string>
 	<string name="char_label_notes_flaws">FLAWS</string>
-	<string name="char_label_size">SIZE</string>
-	<string name="char_label_alignment">ALIGNMENT</string>
-	<string name="char_label_deity">DEITY</string>
 	<string name="char_label_appearance">APPEARANCE</string>
 	<string name="char_label_notes">NOTES</string>
 
 	<!-- Character - Logs -->
 	<string name="char_logs_tooltip_edit">Edit Logs</string>
 	<string name="char_label_faction">FACTION</string>
-	<string name="char_label_dci">DCI #</string>
 	<string name="char_logs_label_adventures">ADVENTURES</string>
 	<string name="char_logs_label_sessionno">SESSION #</string>
 	<string name="char_logs_label_date">DATE</string>
-	<string name="char_logs_label_dmname">GM NAME AND DCI #</string>
-	<string name="char_logs_label_xp">XP</string>
-	<string name="char_logs_label_gold">GOLD</string>
+	<string name="char_logs_label_dmname">GM NAME</string>
+	<string name="char_logs_label_gold">CREDITS</string>
 	<string name="char_logs_label_dt">DOWNTIME</string>
-	<string name="char_logs_label_renown">RENOWN</string>
-	<string name="char_logs_label_magic">MAGIC ITEM</string>
 	<string name="char_logs_label_start">Starting</string>
 	<string name="char_logs_label_earn">Adjustment</string>
 	<string name="char_logs_label_total">Total</string>
@@ -328,24 +320,12 @@
 	<string name="char_label_weapondmgdetail">Damage:</string>
 	<string name="char_label_weapondmgtype">Type:</string>
 	<string name="char_label_weaponproperties">Properties:</string>
-	<string name="char_label_weaponammo">Ammo</string>
+	<string name="char_label_weaponammo">Magazine</string>
 	<string name="char_button_weapondamage">Damage</string>
-	
-	<string name="char_weaponmeta_title">WEAPON META</string>
-	<string name="char_label_critrange">Crit on:</string>
-	<string name="char_label_critdicebonus">Extra Crit Dice:</string>
-	<string name="char_label_critmelee">Melee</string>
-	<string name="char_label_critranged">Ranged</string>
 	
 	<string name="char_message_atkwithnoammo">[ATTACKING WHILE OUT OF AMMO]</string>
 		
-	<string name="char_label_powers">POWERS</string>
-	<string name="power_label_spellslots">SPELL SLOTS</string>
-	<string name="power_label_spellcastingslots">Spellcasting</string>
-	<string name="power_label_pactmagicslots">Pact Magic</string>
-	
-	<string name="char_tooltip_actionedit">Edit Weapons and Powers</string>
-	<string name="char_tooltip_actionaddpower">Add Power</string>
+	<string name="char_tooltip_actionedit">Edit Weapons</string>
 	<string name="char_tooltip_actionaddweapon">Add Weapon</string>
 	
 	<!-- Pregens -->
@@ -354,73 +334,43 @@
 	<string name="pregen_label_background">Background</string>
 	<string name="pregen_error_missingdata">[ERROR] One or more data records (features, traits, inventory, spells) were unable to be loaded. Please ensure that your Player's Handbook or Basic Rules - Player modules are loaded; and re-add the pregen character.</string>
 
-	<!-- Classes -->
-	<string name="class_value_barbarian">Barbarian</string>
-	<string name="class_value_bard">Bard</string>
-	<string name="class_value_cleric">Cleric</string>
-	<string name="class_value_druid">Druid</string>
-	<string name="class_value_fighter">Fighter</string>
-	<string name="class_value_monk">Monk</string>
-	<string name="class_value_paladin">Paladin</string>
-	<string name="class_value_ranger">Ranger</string>
-	<string name="class_value_rogue">Rogue</string>
-	<string name="class_value_sorcerer">Sorcerer</string>
-	<string name="class_value_warlock">Warlock</string>
-	<string name="class_value_wizard">Wizard</string>
-	<string name="class_short_barbarian">Brb</string>
-	<string name="class_short_bard">Brd</string>
-	<string name="class_short_cleric">Cle</string>
-	<string name="class_short_druid">Drd</string>
-	<string name="class_short_fighter">Ftr</string>
-	<string name="class_short_monk">Mnk</string>
-	<string name="class_short_paladin">Pal</string>
-	<string name="class_short_ranger">Rng</string>
-	<string name="class_short_rogue">Rog</string>
-	<string name="class_short_sorcerer">Sor</string>
-	<string name="class_short_warlock">War</string>
-	<string name="class_short_wizard">Wiz</string>
-
 	<!-- Skills -->
-	<string name="skill_value_acrobatics">Acrobatics</string>
-	<string name="skill_value_animalhandling">Animal Handling</string>
-	<string name="skill_value_arcana">Arcana</string>
-	<string name="skill_value_athletics">Athletics</string>
-	<string name="skill_value_deception">Deception</string>
-	<string name="skill_value_history">History</string>
-	<string name="skill_value_insight">Insight</string>
-	<string name="skill_value_intimidation">Intimidation</string>
-	<string name="skill_value_investigation">Investigation</string>
-	<string name="skill_value_medicine">Medicine</string>
-	<string name="skill_value_nature">Nature</string>
-	<string name="skill_value_perception">Perception</string>
-	<string name="skill_value_performance">Performance</string>
-	<string name="skill_value_persuasion">Persuasion</string>
-	<string name="skill_value_religion">Religion</string>
-	<string name="skill_value_sleightofhand">Sleight of Hand</string>
+	<string name="skill_value_admin">Admin</string>
+	<string name="skill_value_advocate">Advocate</string>
+	<string name="skill_value_animalshandling">Animals (handling)</string>
+	<string name="skill_value_animalstraining">Animals (training)</string>
+	<string name="skill_value_animalsveterinary">Animals (veterinary)</string>
+	<string name="skill_value_athleticsdexterity">Athletics (dexterity)</string>
+	<string name="skill_value_athleticsendurance">Athletics (endurance)</string>
+	<string name="skill_value_athleticsstrength">Athletics (strength)</string>
+	<string name="skill_value_astrogation">Astrogation</string>
+	<string name="skill_value_broker">Broker</string>
+	<string name="skill_value_carouse">Carouse</string>
+	<string name="skill_value_diplomat">Diplomat</string>
+	<string name="skill_value_explosives">Explosives</string>
+	<string name="skill_value_gambler">Gambler</string>
+	<string name="skill_value_investigate">Investigate</string>
+	<string name="skill_value_jackofalltrades">Jack of all Trades</string>
+	<string name="skill_value_leadership">Leadership</string>
+	<string name="skill_value_mechanic">Mechanic</string>
+	<string name="skill_value_medic">Medic</string>
+	<string name="skill_value_navigation">Navigation</string>
+	<string name="skill_value_persuade">Persuade</string>
+	<string name="skill_value_recon">Recon</string>
 	<string name="skill_value_stealth">Stealth</string>
-	<string name="skill_value_survival">Survival</string>
+	<string name="skill_value_steward">Steward</string>
+	<string name="skill_value_streetwise">Streetwise</string>
+	<string name="skill_value_vaccsuit">Vacc Suit</string>
 
 	<!-- NPCs -->
-	<string name="npc_label_type">Type</string>
-	<string name="npc_label_speed">Speed</string>
-	<string name="npc_label_senses">Senses</string>
+	<string name="npc_label_species">Species</string>
+	<string name="npc_label_gender">Gender</string>
+	<string name="npc_label_age">Age</string>
 	<string name="npc_label_abilities">Abilities</string>
 	<string name="npc_label_skills">Skills</string>
-	<string name="npc_label_challenge">Challenge</string>
-	<string name="npc_label_alignment">Alignment</string>
-	<string name="npc_label_languages">Languages</string>
-	<string name="npc_label_savingthrows">Saving Throws</string>
-	<string name="npc_label_damagevulnerabilities">Damage Vulnerabilities</string>
-	<string name="npc_label_damageresistances">Damage Resistances</string>
-	<string name="npc_label_damageimmunities">Damage Immunities</string>
-	<string name="npc_label_conditionimmunities">Condition Immunities</string>
+	<string name="npc_label_equiptment">Equiptment</string>
 	<string name="npc_header_traits">TRAITS</string>
-	<string name="npc_header_actions">ACTIONS</string>
-	<string name="npc_header_reactions">REACTIONS</string>
-	<string name="npc_header_legendaryactions">LEGENDARY ACTIONS</string>
-	<string name="npc_header_lairactions">LAIR ACTIONS</string>
-	<string name="npc_header_innatespells">INNATE SPELLS</string>
-	<string name="npc_header_spells">SPELLS</string>
+	<string name="npc_label_notes">Notes</string>
 	<string name="npc_empty_powername">&#171; Trait or Action Name &#187;</string>
 
 	<!-- Encounters -->
@@ -505,30 +455,6 @@
 	<string name="power_menu_reparse">Reparse spell actions</string>
 	<string name="power_menu_actiondelete">Remove Action</string>
 
-	<!-- Local Mode -->
-	<string name="local_label_score">Score</string>
-	<string name="local_label_cost">Cost</string>
-	<string name="local_label_to">to</string>
-	<string name="local_label_upto">Up to</string>
-	<string name="local_label_pointcost">Point cost</string>
-	<string name="local_label_dicerolled">Dice rolled</string>
-	<string name="local_label_roll">Roll</string>
-	<string name="local_label_scoresof">scores of</string>
-	<string name="local_label_dicedrop">dice, drop</string>
-	<string name="local_label_modifyby">and modify by</string>
-	<string name="local_label_pointcostsundefined">Point costs are undefined</string>
-	<string name="local_label_pointcosts">Point costs</string>
-	<string name="local_label_assign">Assign</string>
-	<string name="local_label_scores">scores</string>
-	<string name="local_label_currently">Currently</string>
-	<string name="local_label_pointsused">points used</string>
-	<string name="local_tooltip_sort">Sort</string>
-	<string name="local_tooltip_definepoints">Define point ranges</string>
-	
-	<string name="local_tab_log">Log</string>
-	<string name="local_tab_rolls">Roll</string>
-	<string name="local_tab_points">Points</string>
-	
 	<!-- Reference -->
 	<string name="ref_label_listname">Name</string>
 	<string name="ref_label_listcost">Cost</string>
@@ -643,51 +569,14 @@
 	<string name="power_label_effect_applyaction">On next action</string>
 	<string name="power_label_effect_applyroll">On next roll</string>
 	<string name="power_label_effect_applysingle">Once per modifier</string>
-	
-	<!-- Item Forge -->
-	<string name="forge_item_window_title">Magic Item Forge</string>
-	<string name="forge_item_label_items">Equipment</string>
-	<string name="forge_item_label_templates">Magic Item Templates</string>
-	<string name="forge_item_label_activateforge">Forge Magic Item</string>
-	<string name="forge_item_label_clearforge">Clear Forge</string>
-	<string name="forge_ok">OK</string>
-	<string name="forge_error">Error</string>
-	
-	<string name="forge_item_advgear">Adventuring Gear</string>
-	<string name="forge_item_armor">Armor</string>
-	<string name="forge_item_mount">Mount</string>
-	<string name="forge_item_tool">Tool</string>
-	<string name="forge_item_vehicle">Vehicle/Harness</string>
-	<string name="forge_item_weapon">Weapon</string>
-	<string name="forge_magicitem_armor">Magic Armor</string>
-	<string name="forge_magicitem_potion">Magic Potion</string>
-	<string name="forge_magicitem_ring">Magic Ring</string>
-	<string name="forge_magicitem_rod">Magic Rod</string>
-	<string name="forge_magicitem_scroll">Magic Scroll</string>
-	<string name="forge_magicitem_staff">Magic Staff</string>
-	<string name="forge_magicitem_wand">Magic Wand</string>
-	<string name="forge_magicitem_weapon">Magic Weapon</string>
-	<string name="forge_magicitem_wondrousitem">Magic Wondrous Item</string>
-	<string name="forge_magicspell">Magic Spell</string>
-	
-	<string name="forge_item_empty_items">Drag and drop library or campaign equipment to this window. The template(s) in the Magic Item Templates window will be applied to each piece of equipment in this window when the Forge Magic Item button is clicked.</string>
-	<string name="forge_item_empty_templates">Drag and drop library magic item templates to this window. The magic item template(s) in this window will be applied to each equipment entry in the Equipment window when the Forge Magic Item button is clicked.</string>
-	<string name="forge_item_message_success">New magic item forged.</string>
-	<string name="forge_item_message_incompatible">Error, please remove incompatible items.</string>
-	<string name="forge_item_message_missing">Error, please add items before attempting to forge!</string>
-	
+		
 	<!-- Library - Master Index -->
 	<string name="library_recordtype_label_background">Backgrounds</string>
 	<string name="library_recordtype_empty_background">&#171; New Background &#187;</string>
 	<string name="library_recordtype_label_class">Classes</string>
 	<string name="library_recordtype_empty_class">&#171; New Class &#187;</string>
-	<string name="library_recordtype_label_feat">Feats</string>
-	<string name="library_recordtype_empty_feat">&#171; New Feat &#187;</string>
 	<string name="library_recordtype_label_race">Races</string>
 	<string name="library_recordtype_empty_race">&#171; New Race &#187;</string>
 	<string name="library_recordtype_label_skill">Skills</string>
 	<string name="library_recordtype_empty_skill">&#171; New Skill &#187;</string>
-	<string name="library_recordtype_label_spell">Spells</string>
-	<string name="library_recordtype_empty_spell">&#171; New Spell &#187;</string>
-	<string name="library_recordtype_value_spell_level_0">Cantrip</string>
 </root>
