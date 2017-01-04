@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_main">
+		<script>
+			function onDrop(x, y, draginfo)
+				if draginfo.isType("shortcut") then
+					local sClass, sRecord = draginfo.getShortcutData();
+
+					if StringManager.contains({"reference_class", "reference_race", "reference_subrace", "reference_background"}, sClass) then
+						CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
+						return true;
+					end
+				end
+			end
+			
+			function onHealthChanged()
+				local sColor = ActorManager2.getWoundColor("pc", getDatabaseNode());
+				wounds.setColor(sColor);
+			end
+		</script>
+		<sheetdata>		
+			<label_charframetop name="speciestitle">
+				<anchored height="20">
+					<top offset="20" />
+					<left anchor="left" offset="15" />
+					<right offset="-15" />
+				</anchored>
+				<static textres="char_label_species" />
+			</label_charframetop>
+			<linkfield name="specieslink">
+				<anchored to="speciestitle" position="belowright" offset="-10,5" width="20" height="20" />
+				<description field="species" />
+				<closetoggle />
+				<invisible />
+				<script>
+					function onInit()
+						onValueChanged();
+					end
+					function onValueChanged()
+						if isEmpty() then
+							setVisible(false);
+						else
+							setVisible(true);
+						end
+					end
+				</script>
+			</linkfield>
+			<stringu name="species">
+				<anchored to="speciestitle" position="belowleft" offset="-5,5" height="20">
+					<right parent="specieslink" anchor="left" offset="-5" />
+				</anchored>
+			</stringu>
+
+			<label_charframetop name="statstitle">
+				<anchored height="20" width="60">
+					<top offset="120" />
+					<left offset="15" />
+				</anchored>
+				<static textres="char_label_stats" />
+			</label_charframetop>
+			<number_charabilityscore name="strength" source="abilities.strength.score">
+				<anchored>
+					<top offset="12" />
+				</anchored>
+				<target>strength</target>
+			</number_charabilityscore>
+			<label_abilityscore>
+				<anchored to="strength" />
+				<static textres="STR" />
+			</label_abilityscore>
+			<hn name="strength_bonus" source="abilities.strength.bonus" />
+			<string_abilitymodtext name="strength_modtext">
+				<anchored to="strength" />
+			</string_abilitymodtext>
+			<number_charabilityscore name="dexterity" source="abilities.dexterity.score">
+				<target>dexterity</target>
+			</number_charabilityscore>
+			<label_abilityscore>
+				<anchored to="dexterity" />
+				<static textres="DEX" />
+			</label_abilityscore>
+			<hn name="dexterity_bonus" source="abilities.dexterity.bonus" />
+			<string_abilitymodtext name="dexterity_modtext">
+				<anchored to="dexterity" />
+			</string_abilitymodtext>
+			<number_charabilityscore name="endurance" source="abilities.endurance.score">
+				<target>constitution</target>
+			</number_charabilityscore>
+			<label_abilityscore>
+				<anchored to="endurance" />
+				<static textres="END" />
+			</label_abilityscore>
+			<hn name="endurance_bonus" source="abilities.endurance.bonus" />
+			<string_abilitymodtext name="endurance_modtext">
+				<anchored to="endurance" />
+			</string_abilitymodtext>
+			<number_charabilityscore name="intelligence" source="abilities.intelligence.score">
+				<target>intelligence</target>
+			</number_charabilityscore>
+			<label_abilityscore>
+				<anchored to="intelligence" />
+				<static textres="INT" />
+			</label_abilityscore>
+			<hn name="intelligence_bonus" source="abilities.intelligence.bonus" />
+			<string_abilitymodtext name="intelligence_modtext">
+				<anchored to="intelligence" />
+			</string_abilitymodtext>
+			<number_charabilityscore name="education" source="abilities.education.score">
+				<target>education</target>
+			</number_charabilityscore>
+			<label_abilityscore>
+				<anchored to="education" />
+				<static textres="EDU" />
+			</label_abilityscore>
+			<hn name="education_bonus" source="abilities.education.bonus" />
+			<string_abilitymodtext name="education_modtext">
+				<anchored to="education" />
+			</string_abilitymodtext>
+			<number_charabilityscore name="social" source="abilities.social.score">
+				<target>social</target>
+			</number_charabilityscore>
+			<label_abilityscore>
+				<anchored to="social" />
+				<static textres="SOC" />
+			</label_abilityscore>
+			<hn name="social_bonus" source="abilities.social.bonus" />
+			<string_abilitymodtext name="social_modtext">
+				<anchored to="social" />
+			</string_abilitymodtext>
+			
+			<label_charframetop name="healthtitle">
+				<anchored height="20">
+					<top anchor="bottom" offset="-120" />
+					<left offset="105" />
+					<right offset="-105" />
+				</anchored>
+				<icons>char_stats</icons>
+			</label_charframetop>
+			<number_charwounds name="wounds" source="hp.wounds">
+				<anchored to="healthtitle" width="40" height="30">
+					<top anchor="bottom" offset="15" />
+					<left anchor="center" offset="-60" />
+				</anchored>
+				<font>reference-b-large</font>
+				<description textres="char_tooltip_wounds" />
+			</number_charwounds>
+			<label_charfieldtop>
+				<anchored to="wounds" offset="0,15" />
+				<static textres="char_label_wounds" />
+			</label_charfieldtop>
+			<number_dropadd name="hp" source="hp.total">
+				<anchored to="wounds" position="righthigh" offset="15,0" width="40" height="30" />
+				<font>reference-b-large</font>
+				<description textres="hp" />
+				<min value="0" />
+				<script>
+					function onValueChanged()
+						window.onHealthChanged();
+					end
+				</script>
+			</number_dropadd>
+			<label_charfieldtop>
+				<anchored to="hp" offset="5,15" />
+				<static textres="char_label_hpmax" />
+			</label_charfieldtop>
+			<basicnumber name="temphp" source="hp.temporary">
+				<anchored to="hp" position="righthigh" offset="15,0" width="40" height="30" />
+				<font>reference-b-large</font>
+				<color>0000AA</color>
+				<description textres="temphp" />
+				<hideonvalue>0</hideonvalue>
+				<script>
+					function onDrop(x, y, draginfo)
+						if draginfo.getType() == "number" then
+							if draginfo.getNumberData() &gt; 0 then
+								setValue(draginfo.getNumberData());
+							else
+								setValue(getValue() + draginfo.getNumberData());
+							end
+						end
+						
+						return true;
+					end
+				</script>
+			</basicnumber>
+			<label_charfieldtop>
+				<anchored to="temphp" offset="0,15" />
+				<static textres="char_label_hptemp" />
+			</label_charfieldtop>
+			<label>
+				<anchored to="wounds" position="lefthigh" offset="15,5" />
+				<static textres="hp" />
+			</label>
+			
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_sensescombat">
+		<margins control="0,0,0,10" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			
+			<label_charframetop name="sensestitle">
+				<anchored height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
+					<left offset="15" />
+					<right offset="-10" />
+				</anchored>
+				<icons>char_senses</icons>
+			</label_charframetop>
+			<stringu name="senses">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="10" />
+					<left offset="10" />
+					<right offset="-52" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<label_charfieldtop>
+				<anchored to="senses" offset="0,10" />
+				<static textres="char_label_senses" />
+			</label_charfieldtop>
+			<number_charmain_skill_passive name="perception">
+				<anchored to="sensestitle">
+					<top anchor="bottom" offset="10" />
+					<right offset="-5" />
+				</anchored>
+				<skill>skill_value_perception</skill>
+			</number_charmain_skill_passive>
+			<label_charfieldtop>
+				<anchored to="perception" offset="3,10" />
+				<static textres="char_label_perception" />
+				<tooltip textres="skill_value_perception" />
+			</label_charfieldtop>
+
+			<label_charframetop name="combattitle">
+				<anchored height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
+					<left offset="15" />
+					<right offset="-10" />
+				</anchored>
+				<icons>char_init</icons>
+			</label_charframetop>
+			<number_chartotalac name="ac" source="defenses.ac.total">
+				<anchored to="combattitle" width="30" height="40">
+					<top anchor="bottom" offset="10" />
+					<left anchor="center" offset="-70" />
+				</anchored>
+				<frame name="acicon" offset="2,0,2,4" />
+			</number_chartotalac>
+			<button_armorprof name="armorprof" source="defenses.ac.prof">
+				<anchored to="ac" />
+			</button_armorprof>
+			<label_charfieldtop>
+				<anchored to="ac" offset="0,10" />
+				<static textres="ac" />
+			</label_charfieldtop>
+			<number_charinit name="initiative" source="initiative.total">
+				<anchored to="combattitle" width="40" height="30">
+					<top anchor="bottom" relation="relative" offset="15" />
+					<left anchor="center" offset="-20" />
+				</anchored>
+			</number_charinit>
+			<label_charfieldtop>
+				<anchored to="initiative" offset="0,15" />
+				<static textres="char_label_initiative" />
+			</label_charfieldtop>
+			<number_charspeed name="speed" source="speed.total">
+				<anchored to="initiative" position="righthigh" offset="20,0" width="40" height="30" />
+			</number_charspeed>
+			<label_charfieldtop>
+				<anchored to="speed" offset="0,15" />
+				<static textres="char_label_speed" />
+			</label_charfieldtop>
+			<button_charcombatcalc name="button_combatcalc">
+				<anchored to="ac" position="lefthigh" offset="15,5" />
+			</button_charcombatcalc>
+
+			<string_labeled name="speedspecial" source="speed.special">
+				<anchored to="combattitle">
+					<top anchor="bottom" relation="relative" offset="5" />
+					<left offset="-5" />
+					<right offset="5" />
+				</anchored>
+				<labelres>char_label_speedspecial</labelres>
+				<multilinespacing>20</multilinespacing>
+			</string_labeled>
+			<string_labeled name="specialdef" source="defenses.special">
+				<anchored to="combattitle">
+					<top anchor="bottom" relation="relative" offset="5" />
+					<left offset="-5" />
+					<right offset="5" />
+				</anchored>
+				<labelres>char_label_specialdef</labelres>
+				<multilinespacing>20</multilinespacing>
+			</string_labeled>
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="charsheet_classes">
+		<frame>charsheethelper</frame>
+		<placement>
+			<size width="470" height="300" />
+		</placement>
+		<sizelimits>
+			<minimum width="470" height="300" />
+			<dynamic />
+		</sizelimits>
+		<nodelete />
+		<playercontrol />
+		<script>
+			function onDrop(x, y, draginfo)
+				if draginfo.isType("shortcut") then
+					local sClass, sRecord = draginfo.getShortcutData();
+
+					if StringManager.contains({"reference_class", "reference_race", "reference_subrace", "reference_background"}, sClass) then
+						CharManager.addInfoDB(getDatabaseNode(), sClass, sRecord);
+						return true;
+					end
+				end
+			end
+		</script>
+		<sheetdata>
+			<windowtitlebar_char name="title">
+				<prefix>char_classes_title</prefix>
+			</windowtitlebar_char>
+			<anchor_title_charsheethelper name="contentanchor" />
+
+			<label_charframetop name="leveltitle">
+				<anchored to="contentanchor" position="belowleft" offset="10,5" height="20" width="80" />
+				<static textres="char_label_totallevel" />
+			</label_charframetop>
+			<number_charlevel name="level">
+				<anchored to="leveltitle" height="20" width="30">
+					<top anchor="bottom" offset="10" />
+					<left anchor="center" offset="-15" />
+				</anchored>
+				<frame name="fieldlight" offset="7,5,7,5" />
+			</number_charlevel>
+
+			<label_charframetop name="exptitle">
+				<anchored to="contentanchor" position="belowleft" offset="110,5" height="20">
+					<right offset="-10" />
+				</anchored>
+			</label_charframetop>
+			<number_dropadd name="exp">
+				<anchored to="exptitle" height="20" width="70">
+					<top anchor="bottom" offset="10" />
+					<right anchor="center" offset="-15" />
+				</anchored>
+				<description textres="char_tooltip_xp" />
+			</number_dropadd>
+			<label_charfieldtop>
+				<anchored to="exp" offset="0,10" />
+				<static textres="xp" />
+			</label_charfieldtop>
+			<basicnumber name="expneeded">
+				<anchored to="exptitle" height="20" width="70">
+					<top anchor="bottom" offset="10" />
+					<left anchor="center" offset="15" />
+				</anchored>
+				<description textres="char_tooltip_xpneeded" />
+				<script>
+					function onHover(oncontrol)
+						if oncontrol then
+							local draginfo = Input.getDragData();
+							if draginfo and draginfo.isType("number") and draginfo.getNumberData() &lt; getValue() then
+								setColor("BB0000");
+							end
+						else
+							setColor(nil);
+						end
+					end
+					
+					function onDrop(x, y, draginfo)
+						if draginfo.isType("number") and draginfo.getNumberData() &gt; getValue() then
+							setValue(draginfo.getNumberData());
+						end
+
+						return true;
+					end
+				</script>
+			</basicnumber>
+			<label_charfieldtop>
+				<anchored to="expneeded" offset="0,10" />
+				<static textres="char_label_nextlevel" />
+			</label_charfieldtop>
+			
+			<label_charframetop name="hdusedtitle">
+				<anchored to="contentanchor" position="belowright" offset="45,65" height="20" width="30" />
+				<static textres="char_label_hdused" />
+			</label_charframetop>
+			<label_charframetop name="hdtitle">
+				<anchored to="hdusedtitle" position="left" offset="20,0" width="50" />
+				<static textres="char_label_hd" />
+			</label_charframetop>
+			<label_charframetop name="casterlevelmulttitle">
+				<anchored to="hdtitle" position="left" offset="20,0" width="50" />
+				<static textres="char_label_caster" />
+				<tooltip textres="char_tooltip_caster" />
+			</label_charframetop>
+			<label_charframetop name="classleveltitle">
+				<anchored to="casterlevelmulttitle" position="left" offset="20,0" width="35" />
+				<static textres="char_label_level" />
+			</label_charframetop>
+			<label_charframetop name="classtitle">
+				<anchored to="classleveltitle" position="left" offset="20,0">
+					<left parent="contentanchor" offset="10" />
+				</anchored>
+				<static textres="char_label_class" />
+			</label_charframetop>
+			<button_iadd name="classes_iadd">
+				<anchored to="hdusedtitle">
+					<top anchor="bottom" relation="relative" offset="3" />
+					<left anchor="right" offset="15" />
+				</anchored>
+				<target>classes</target>
+			</button_iadd>
+			<list_text name="classes">
+				<anchored to="contentanchor">
+					<top parent="hdusedtitle" anchor="bottom" relation="relative" offset="3" />
+					<left offset="5" />
+					<right offset="-10" />
+					<bottom parent="" offset="-30" />
+				</anchored>
+				<datasource>.classes</datasource>
+				<class>charsheet_class</class>
+			</list_text>
+			<scrollbar>
+				<anchored to="classes" />
+				<target>classes</target>
+			</scrollbar>
+			<button_iedit name="classes_iedit">
+				<anchored to="hdusedtitle" position="righthigh" offset="15,0" />
+				<target>classes</target>
+			</button_iedit>
+
+			<close_charsheethelper />
+			<resize_charsheethelper />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_class">
+		<margins control="0,0,0,2" />
+		<sizelimits>	
+		 	<minimum height="20" />	
+		</sizelimits>
+		<script>
+			function action(draginfo)
+				local nodeChar = getDatabaseNode().getChild("...")
+				local rActor = ActorManager.getActor("pc", nodeChar);
+
+				ActionRecovery.performRoll(draginfo, rActor, getDatabaseNode());
+			end
+			
+			function onDragStart(button, x, y, draginfo)
+				action(draginfo);
+				return true;
+			end
+			
+			function onDoubleClick(x, y)
+				action();
+				return true;
+			end
+		</script>
+		<sheetdata>
+			<genericcontrol name="rightanchor">
+				<anchored position="insidetopright" offset="0,3" width="0" height="0" />
+				<invisible />
+			</genericcontrol>
+			<genericcontrol name="spacer">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+			<linkfield name="shortcut">
+				<anchored to="rightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" />
+				</anchored>
+				<script>
+					function onInit()
+						onValueChanged();
+					end
+					function onValueChanged()
+						setVisible(not isEmpty());
+					end
+				</script>
+			</linkfield>
+			<button_idelete name="idelete">
+				<anchored to="rightanchor">
+					<top />
+					<right anchor="left" />
+				</anchored>
+			</button_idelete>
+			<number_charwounds name="hdused">
+				<anchored to="spacer" position="left" offset="15,0" width="30" />
+				<description textres="char_tooltip_hdused" />
+			</number_charwounds>
+			<basicdice name="hddie">
+				<anchored to="hdused" position="left" offset="20,0" width="50" />
+				<script>
+					function onDragStart(button, x, y, draginfo)
+						return window.onDragStart(button, x, y, draginfo);
+					end
+
+					function onDoubleClick(x, y)
+						return window.onDoubleClick(x, y);
+					end
+				</script>
+			</basicdice>
+			<button_checkbox name="casterpactmagic">
+				<anchored to="hddie" position="left" offset="15,0" width="10" />
+				<tooltip textres="char_tooltip_casterpactmagic" />
+			</button_checkbox>
+			<buttonfield name="casterlevelinvmult">
+				<anchored to="casterpactmagic" position="left" offset="5,0" width="40" />
+				<frame name="fielddark" offset="7,5,7,5" />
+				<state text="-" />
+				<state text="1 x" />
+				<state text="1/2 x" />
+				<state text="1/3 x" />
+			</buttonfield>
+			<basicnumber name="level">
+				<anchored to="casterlevelinvmult" position="left" offset="20,0" width="30" />
+			</basicnumber>
+			<string_textlistitem name="name">
+				<anchored>
+					<top parent="rightanchor" offset="0" />
+					<left offset="5" />
+					<right parent="level" anchor="left" relation="relative" offset="-25" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</string_textlistitem>
+		</sheetdata>
+	</windowclass>	
+
+	<windowclass name="charsheet_combatcalc">
+		<frame>charsheethelper</frame>
+		<placement>
+			<size width="500" height="220" />
+		</placement>
+		<nodelete />
+		<playercontrol />
+		<sheetdata>
+			<windowtitlebar_char name="title">
+				<prefix>char_combatcalc_title</prefix>
+			</windowtitlebar_char>
+			<anchor_title_charsheethelper name="contentanchor" />
+
+			<anchor_column name="columnanchor">
+				<anchored to="contentanchor" position="below" offset="0,-5" />
+			</anchor_column>
+			
+			<!-- Init Detail -->
+			<label name="label_initdetail">
+				<anchored width="60">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="20" />
+					<left offset="30" />
+				</anchored>
+				<static textres="char_label_initdetail" />
+			</label>
+			<simplenumber name="initdexbonus" source="abilities.dexterity.bonus">
+				<anchored to="label_initdetail" position="righthigh" offset="5,0" width="45" height="20" />
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<hideonvalue>0</hideonvalue>
+			</simplenumber>
+			<label_fieldtop name="label_initdexbonus">
+				<anchored to="initdexbonus" />
+				<static textres="dex" />
+			</label_fieldtop>
+			<label name="label_initplus">
+				<anchored to="initdexbonus" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="initmiscbonus" source="initiative.misc">
+				<anchored to="label_initplus" position="right" offset="5,0" width="45" />
+				<hideonvalue>0</hideonvalue>
+			</basicnumber>
+			<label_fieldtop name="label_initmiscbonus">
+				<anchored to="initmiscbonus" />
+				<static textres="char_label_initmisc" />
+			</label_fieldtop>
+			
+			<!-- Speed Detail -->
+			<label name="label_speeddetail">
+				<anchored width="60">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="20" />
+					<left offset="30" />
+				</anchored>
+				<static textres="char_label_speeddetail" />
+			</label>
+			<basicnumber name="speedbase" source="speed.base">
+				<anchored to="label_speeddetail" position="righthigh" offset="5,0" width="45" height="20" />
+			</basicnumber>
+			<label_fieldtop name="label_speedbase">
+				<anchored to="speedbase" />
+				<static textres="char_label_speedbase" />
+			</label_fieldtop>
+			<label name="label_speedplus">
+				<anchored to="speedbase" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="speedarmor" source="speed.armor">
+				<anchored to="label_speedplus" position="righthigh" offset="5,0" width="45" height="20" />
+			</basicnumber>
+			<label_fieldtop name="label_speedarmor">
+				<anchored to="speedarmor" />
+				<static textres="char_label_speedarmor" />
+			</label_fieldtop>
+			<label name="label_speedplus2">
+				<anchored to="speedarmor" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="speedmisc" source="speed.misc">
+				<anchored to="label_speedplus2" position="righthigh" offset="5,0" width="45" height="20" />
+			</basicnumber>
+			<label_fieldtop name="label_speedmisc">
+				<anchored to="speedmisc" />
+				<static textres="char_label_speedmisc" />
+			</label_fieldtop>
+			
+			<!-- Armor Detail -->
+			<label name="label_armordetail">
+				<anchored width="60">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="20" />
+					<left offset="30" />
+				</anchored>
+				<static textres="char_label_armordetail" />
+			</label>
+			<simplenumberc name="acbase">
+				<anchored to="label_armordetail" position="righthigh" offset="5,0" width="45" height="20" />
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<default>10</default>
+				<readonly />
+			</simplenumberc>
+			<label_fieldtop name="label_acbase">
+				<anchored to="acbase" />
+				<static textres="char_label_armorbase" />
+			</label_fieldtop>
+			<label name="label_armorplus">
+				<anchored to="acbase" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="acarmor" source="defenses.ac.armor">
+				<anchored to="label_armorplus" position="righthigh" offset="5,0" width="45" height="20" />
+			</basicnumber>
+			<label_fieldtop name="label_acarmor">
+				<anchored to="acarmor" />
+				<static textres="char_label_armormain" />
+			</label_fieldtop>
+			<label name="label_armorplus2">
+				<anchored to="acarmor" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="acshield" source="defenses.ac.shield">
+				<anchored to="label_armorplus2" position="righthigh" offset="5,0" width="45" height="20" />
+			</basicnumber>
+			<label_fieldtop name="label_acshield">
+				<anchored to="acshield" />
+				<static textres="char_label_armorshield" />
+			</label_fieldtop>
+			<label name="label_armorplus3">
+				<anchored to="acshield" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<button_stringcycler name="acdexbonus">
+				<anchored to="label_armorplus3" position="righthigh" offset="5,0" width="45" height="20" />
+				<source><name>defenses.ac.dexbonus</name></source>
+				<parameters>
+					<defaultlabelres>char_label_armordexfull</defaultlabelres>
+					<labelsres>char_label_armordexmax2|char_label_armordexmax3|char_label_armordexnone</labelsres>
+					<values>max2|max3|no</values>
+				</parameters>
+			</button_stringcycler>
+			<label_fieldtop name="label_acdexbonus">
+				<anchored to="acdexbonus" />
+				<static textres="dex" />
+			</label_fieldtop>
+			<label name="label_armorplus4">
+				<anchored to="acdexbonus" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<cycler_ability name="acstat2">
+				<anchored to="label_armorplus4" position="righthigh" offset="5,0" width="45" height="20" />
+				<source><name>defenses.ac.stat2</name></source>
+			</cycler_ability>
+			<label_fieldtop name="label_acstat2">
+				<anchored to="acstat2" />
+				<static textres="2nd" />
+			</label_fieldtop>
+			<label name="label_armorplus5">
+				<anchored to="acstat2" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="acmisc" source="defenses.ac.misc">
+				<anchored to="label_armorplus5" position="righthigh" offset="5,0" width="45" height="20" />
+			</basicnumber>
+			<label_fieldtop name="label_acmisc">
+				<anchored to="acmisc" />
+				<static textres="char_label_armormisc" />
+			</label_fieldtop>
+
+			<label name="label_acprof">
+				<anchored to="acarmor" position="belowleft" offset="0,5" />
+				<static textres="char_label_armorprof" />
+			</label>
+			<button_prof name="acprof" source="defenses.ac.prof">
+				<anchored to="label_acprof" position="righthigh" offset="10,0" width="20" height="20" />
+				<default>1</default>
+			</button_prof>
+
+			<label name="label_acdisstealth">
+				<anchored to="acdexbonus" position="belowleft" offset="0,5" />
+				<static textres="char_label_armordisstealth" />
+			</label>
+			<button_checkbox name="acdisstealth" source="defenses.ac.disstealth">
+				<anchored to="label_acdisstealth" position="righthigh" offset="10,4" width="12" height="12" />
+			</button_checkbox>
+
+			<close_charsheethelper />
+		</sheetdata>
+	</windowclass>
+	
+	<windowclass name="charsheet_healthcalc">
+		<frame>charsheethelper</frame>
+		<placement>
+			<size width="400" height="120" />
+		</placement>
+		<nodelete />
+		<playercontrol />
+		<sheetdata>
+			<windowtitlebar_char name="title">
+				<prefix>char_healthcalc_title</prefix>
+			</windowtitlebar_char>
+			<anchor_title_charsheethelper name="contentanchor" />
+
+			<anchor_column name="columnanchor">
+				<anchored to="contentanchor" position="below" offset="0,-5" />
+			</anchor_column>
+			
+			<!-- Hit Dice Detail -->
+			<label name="label_hddetail">
+				<anchored width="80">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="20" />
+					<left offset="30" />
+				</anchored>
+				<static textres="char_label_hddetail" />
+			</label>
+			<label name="label_hddummy">
+				<anchored to="label_hddetail" position="righthigh" offset="5,0" width="45" height="20" />
+				<static textres="char_label_hdclass" />
+				<center />
+			</label>
+			<label name="label_hdplus">
+				<anchored to="label_hddummy" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<cycler_abilitybase name="hdstat">
+				<anchored to="label_hdplus" position="righthigh" offset="5,0" width="45" height="20" />
+				<source><name>hp.hdstat</name></source>
+			</cycler_abilitybase>
+			<label_fieldtop name="label_hdstat">
+				<anchored to="hdstat" />
+				<static textres="char_label_hdstat" />
+			</label_fieldtop>
+			<label name="label_hdplus2">
+				<anchored to="hdstat" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<cycler_ability name="hdstat2">
+				<anchored to="label_hdplus2" position="righthigh" offset="5,0" width="45" height="20" />
+				<source><name>hp.hdstat2</name></source>
+			</cycler_ability>
+			<label_fieldtop name="label_hdstat2">
+				<anchored to="hdstat2" />
+				<static textres="2nd" />
+			</label_fieldtop>
+			<label name="label_hdplus3">
+				<anchored to="hdstat2" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="hdmod" source="hp.hdmod">
+				<anchored to="label_hdplus3" position="righthigh" offset="5,0" width="45" height="20" />
+				<hideonvalue value="0" />
+			</basicnumber>
+			<label_fieldtop name="label_hdmod">
+				<anchored to="hdmod" />
+				<static textres="char_label_hdmisc" />
+			</label_fieldtop>
+
+			<close_charsheethelper />
+		</sheetdata>
+	</windowclass>
+</root>

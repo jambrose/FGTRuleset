@@ -71,11 +71,12 @@
 	<!-- <icon name="visibilityoff" file="graphics/icons/visibilityoff.png" /> -->
 	
 	<!-- Character Sheet -->
+	<icon name="char_species" file="graphics/icons/char_species.png" />
 	<!-- <icon name="char_weapon_melee" file="graphics/icons/char_weapon_melee.png" />
 	<icon name="char_weapon_ranged" file="graphics/icons/char_weapon_ranged.png" />
 	<icon name="char_weapon_thrown" file="graphics/icons/char_weapon_thrown.png" />
 	<icon name="char_name" file="graphics/icons/char_name.png" />	
-	<icon name="char_race" file="graphics/icons/char_race.png" />
+	
 	<icon name="char_background" file="graphics/icons/char_background.png" />
 	<icon name="char_class" file="graphics/icons/char_class.png" />
 	<icon name="char_stats" file="graphics/icons/char_stats.png" />
@@ -95,14 +96,14 @@
 	<icon name="char_inventory" file="graphics/icons/char_inventory.png" />		
 	<icon name="char_treasure" file="graphics/icons/char_inventory.png" />		
 	<icon name="char_notes" file="graphics/icons/char_notes.png" />	
-
+ -->
 	<icon name="minimized_char" file="graphics/icons/minimized_char.png" />
-	<icon name="minimized_charattacks" file="graphics/icons/minimized_charattacks.png" />
+	<!-- <icon name="minimized_charattacks" file="graphics/icons/minimized_charattacks.png" />
 	<icon name="minimized_charability" file="graphics/icons/minimized_charability.png" />
 	<icon name="minimized_charpowers" file="graphics/icons/minimized_charpowers.png" />
 	<icon name="minimized_charequipment" file="graphics/icons/minimized_charequipment.png" />
-	<icon name="minimized_charnotes" file="graphics/icons/minimized_charnotes.png" />
- -->
+	<icon name="minimized_charnotes" file="graphics/icons/minimized_charnotes.png" /> -->
+
 	<!-- Tokens - General -->
 <!-- 	<icon name="cond_more" file="graphics/token/token_cond_more.png" />
 	<icon name="cond_generic" file="graphics/token/token_cond_generic.png" />

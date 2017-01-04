@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="imagewindow" merge="join">
+		<sheetdata>
+			<subwindow name="header">
+				<anchored height="40" />
+			</subwindow>
+			<imagecontrol name="image">
+				<bounds>21,98,-27,-29</bounds>
+			</imagecontrol>
+			<subwindow name="toolbar">
+				<bounds>21,62,-27,36</bounds>
+			</subwindow>
+		</sheetdata>
+	</windowclass>
+	<windowclass name="imagewindow_header" merge="join">
+		<sheetdata>
+			<string_record_name name="name">
+				<anchored height="25" />
+			</string_record_name>
+			<string_record_name name="nonid_name">
+				<anchored height="25" />
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+</root>

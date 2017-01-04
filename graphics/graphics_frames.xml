@@ -7,6 +7,12 @@
 
 <root>
 
+	<!-- Characters -->
+	<framedef name="acicon">
+		<bitmap file="graphics/frames/acicon.png" />
+		<topleft rect="0,0,35,39" />
+	</framedef>
+
 	<!-- Override CoreRPG ruleset graphics -->
 
 	<!-- Desktop background -->
@@ -23,4 +29,10 @@
 		<bottomright rect="305,445,395,5" />
 	</framedef>
 
+	<!-- Characters -->
+	<framedef name="charsheet">
+		<bitmap file="graphics/frames/charsheet.png" />
+		<offset>50,50,45,45</offset>
+		<insideoffset>0,5,12,14</insideoffset>
+	</framedef>
 </root>

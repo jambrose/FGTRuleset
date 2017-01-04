@@ -1,0 +1,10 @@
+Stuff to change
+
+profbonustitle
+profbonus
+
+Delete?
+backgroundtitle
+char_label_background
+charsheet_hd
+hp.deathsavefail

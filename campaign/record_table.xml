@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="table_header" merge="join">
+		<sheetdata>
+			<anchor_record_header_right name="rightanchor">
+				<anchored>
+					<top offset="8" />
+				</anchored>
+			</anchor_record_header_right>
+			<string_record_name name="name">
+				<anchored>
+					<right offset="-30" />
+				</anchored>
+			</string_record_name>
+		</sheetdata>
+	</windowclass>
+</root>

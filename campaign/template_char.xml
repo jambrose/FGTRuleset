@@ -120,6 +120,8 @@
 			</script>
 		</simplenumber>
 	</template>
+	
+	<!-- **DELETE -->
 	<template name="stringc_charclasslevel">
 		<stringcontrol>
 			<anchored height="20" />
@@ -150,6 +152,8 @@
 			</script>
 		</stringcontrol>
 	</template>
+	
+	<!-- **DELETE -->
 	<template name="button_charclasslevel">
 		<buttoncontrol>
 			<anchored width="20" height="20" />
@@ -186,11 +190,12 @@
 			<rollable />
 			<displaysign />
 			<modifiersize>mini</modifiersize>
+								<!-- Delete/Chage profbonus-->
 			<script>
 				function onInit()
 					addSourceWithOp("abilities." .. target[1] .. ".bonus", "+");
 					addSource("abilities." .. target[1] .. ".saveprof");
-					addSource("profbonus");
+					addSource("profbonus"); 
 					super.onInit();
 				end
 
@@ -237,6 +242,7 @@
 		<number_chartotal>
 			<anchored width="30" height="20" />
 			<modifiersize>mini</modifiersize>
+								<!-- Delete/Chage profbonus-->
 			<script>
 				local nodeSkill = nil;
 				

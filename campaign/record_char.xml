@@ -6,7 +6,6 @@
   attribution and copyright information.
 -->
 <root>
-
 	<windowclass name="charsheet">
 		<frame>charsheet</frame>
 		<placement>
@@ -19,6 +18,7 @@
 		<softclose />
 		<nodelete />
 		<playercontrol />
+		<sharable />
 		<minimize>minimized_char</minimize>
 		<tooltip field="name" />
 		<script file="campaign/scripts/char.lua" />
@@ -27,32 +27,36 @@
 			<anchor_title_charsheet name="contentanchor" />
 			
 			<!-- From CoreRPG -->
-			<button_charactivate>
+			
+			<!-- Chat bubble thing -->
+			<button_charactivate> 
 				<anchored to="contentanchor" position="belowright" offset="0,5" width="23" height="22" />
-			</button_charactivate>		
+			</button_charactivate>	
+			
 			<token_char name="token">
 				<anchored to="contentanchor" position="belowright" offset="25,6" width="45" height="45" />
 			</token_char>
+			
 			<!-- Character Portrait Generic? -->
 			<genericcontrol>
-				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
+				<anchored to="contentanchor" position="belowright" offset="75,5" width="45" height="45" />
 				<icon>charlist_base</icon> <!-- From CoreRPG\graphics\graphics_portraits.xml -->
 				<disabled />
 			</genericcontrol>
 			<!-- Local Portrait From CoreRPG\campaign\template_char.xml -->
 			<portrait_charlocal name="localportrait">
-				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
+				<anchored to="contentanchor" position="belowright" offset="75,5" width="45" height="45" />
 				<invisible />
 			</portrait_charlocal>
 			<portrait_char name="portrait">
-				<anchored to="contentanchor" position="belowleft" offset="5,5" width="45" height="45" />
+				<anchored to="contentanchor" position="belowright" offset="75,5" width="45" height="45" />
 			</portrait_char>
 
 			<!-- campaign\template_char.xml -->
 			<label_charframetop name="nametitle">
 				<anchored to="contentanchor" height="20">
 					<top anchor="bottom" offset="7" />
-					<left offset="65" />
+					<left offset="15" />
 					<right offset="-135" />
 				</anchored>
 				<static textres="char_label_name" />

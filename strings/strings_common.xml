@@ -169,7 +169,7 @@
 
 	<!-- Characters - Main -->
 	<string name="char_label_background">BACKGROUND</string>
-	<string name="char_label_race">SPECIES</string>
+	<string name="char_label_species">SPECIES</string>
 	<string name="char_label_stats">ABILITIES</string>
 	<string name="char_label_initiative">INIT</string>
 	<string name="char_label_speed">SPEED</string>
