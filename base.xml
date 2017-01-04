@@ -10,7 +10,7 @@
 
 	<!-- Attributes -->
 	<description>
-		<text>Traveller RPG</text>
+		<text>Traveller RPG ruleset based on Mongoose Traveller v2</text>
 		<author>Jack Ambrose</author>
 		<text>Classic/Mongoose Traveller 2E: Science-Fiction Adventure in the Far Future</text>
 		<website>http://www.mongoosepublishing.com</website>
@@ -30,8 +30,8 @@
 	<includefile source="graphics/graphics_radial.xml" />
 	
 	<!-- String resources -->
-	<!-- <includefile source="strings/strings_common.xml" />
-	<includefile source="strings/strings_utility.xml" />
+	<includefile source="strings/strings_common.xml" />
+	<!-- <includefile source="strings/strings_utility.xml" />
 	<includefile source="strings/strings_campaign.xml" />
 	<includefile source="strings/strings_ct.xml" />
 	<includefile source="strings/strings_ps.xml" /> -->
@@ -97,31 +97,31 @@
 	<includefile source="utility/utility_misc.xml" /> -->
 	
 	<!-- Campaign Records -->
-	<!-- <includefile source="campaign/template_campaign.xml" />
+	<includefile source="campaign/template_campaign.xml" />
 	<includefile source="campaign/template_char.xml" />
-
-	<includefile source="campaign/campaign_masterindex.xml" />
-	<includefile source="campaign/campaign_chars.xml" />
+	<includefile source="campaign/template_psionics.xml" />
 	
 	<includefile source="campaign/record_char.xml" />
 	<includefile source="campaign/record_char_main.xml" />
+	<includefile source="campaign/record_char_skills.xml" />
 	<includefile source="campaign/record_char_abilities.xml" />
 	<includefile source="campaign/record_char_inventory.xml" />
 	<includefile source="campaign/record_char_notes.xml" />
+	<includefile source="campaign/record_char_logs.xml" />
+	<includefile source="campaign/record_char_actions.xml" />
+	<includefile source="campaign/record_char_weapon.xml" />
 	<includefile source="campaign/record_ability.xml" />
+	<includefile source="campaign/record_adventure.xml" />
 	<script name="CharManager" file="campaign/scripts/manager_char.lua" />
 
-	<includefile source="campaign/record_note.xml" />
-	<includefile source="campaign/record_story.xml" />
-	<includefile source="campaign/record_storytemplate.xml" />
-	<includefile source="campaign/record_quest.xml" />
 	<includefile source="campaign/record_image.xml" />
-	<includefile source="campaign/record_table.xml" />
 	<includefile source="campaign/record_npc.xml" />
 	<includefile source="campaign/record_encounter.xml" />
-	<includefile source="campaign/record_encounterrandom.xml" />
 	<includefile source="campaign/record_item.xml" />
-	<includefile source="campaign/record_parcel.xml" /> -->
+	<includefile source="campaign/record_parcel.xml" />
+	<includefile source="campaign/record_table.xml" />
+
+	<includefile source="campaign/record_quest.xml" />
 	
 	<!-- REFERENCE -->
 	<!-- <includefile source="ref/template_ref.xml" />
