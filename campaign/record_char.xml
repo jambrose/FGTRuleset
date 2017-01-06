@@ -23,106 +23,28 @@
 		<tooltip field="name" />
 		<script file="campaign/scripts/char.lua" />
 		<sheetdata>
-			<!-- From common\template_windows.xml -->
-			<anchor_title_charsheet name="contentanchor" />
+			<!-- Frame to show on all pages of the charsheet -->
+			<sheetframe name="main_character">
+				<bounds>14,10,400,74</bounds>
+				<!-- <script file="classes/characters/charsheet_init.lua" /> -->
+			</sheetframe>
+			<sheetframetitle name="main_character_title">
+			<anchored to="main_character">
+				<static>Character</static>
+			</anchored>
+			</sheetframetitle>			
 			
-			<!-- From CoreRPG -->
+			<sheetstringfield name="main_character_name" source="name">
+				<anchored to="main_character" position="insidetopleft" offset="17,14" width="218" />
+				<label>Name</label>
+				<empty>&#171; Unnamed &#187;</empty>
+				<tabtarget>
+					<next>main_character_race</next>
+					<prev>main_social_shame</prev>
+				</tabtarget>
+			</sheetstringfield>
 			
-			<!-- Chat bubble thing -->
-			<button_charactivate> 
-				<anchored to="contentanchor" position="belowright" offset="0,5" width="23" height="22" />
-			</button_charactivate>	
 			
-			<token_char name="token">
-				<anchored to="contentanchor" position="belowright" offset="25,6" width="45" height="45" />
-			</token_char>
-			
-			<!-- Character Portrait Generic? -->
-			<genericcontrol>
-				<anchored to="contentanchor" position="belowright" offset="75,5" width="45" height="45" />
-				<icon>charlist_base</icon> <!-- From CoreRPG\graphics\graphics_portraits.xml -->
-				<disabled />
-			</genericcontrol>
-			<!-- Local Portrait From CoreRPG\campaign\template_char.xml -->
-			<portrait_charlocal name="localportrait">
-				<anchored to="contentanchor" position="belowright" offset="75,5" width="45" height="45" />
-				<invisible />
-			</portrait_charlocal>
-			<portrait_char name="portrait">
-				<anchored to="contentanchor" position="belowright" offset="75,5" width="45" height="45" />
-			</portrait_char>
-
-			<!-- campaign\template_char.xml -->
-			<label_charframetop name="nametitle">
-				<anchored to="contentanchor" height="20">
-					<top anchor="bottom" offset="7" />
-					<left offset="15" />
-					<right offset="-135" />
-				</anchored>
-				<static textres="char_label_name" />
-			</label_charframetop>
-			
-			<!-- CoreRPG\common\template_common.xml -->
-			<stringu name="name">
-				<anchored to="nametitle" position="insidetop" offset="0,25" height="20" />
-			</stringu>
-			
-			<!-- Defining the sub char sheets and tabs -->
-			<sub_charsheet name="main">
-				<class>charsheet_main</class>
-			</sub_charsheet>
-			<sub_charsheet name="skills">
-				<class>charsheet_skills</class>
-			</sub_charsheet>
-			<sub_charsheet name="abilities">
-				<class>charsheet_abilities</class>
-			</sub_charsheet>
-			<sub_charsheet name="inventory">
-				<class>charsheet_inventory</class>
-			</sub_charsheet>
-			<sub_charsheet name="notes">
-				<class>charsheet_notes</class>
-			</sub_charsheet>
-			<sub_charsheet name="logs">
-				<class>charsheet_logs</class>
-			</sub_charsheet>
-			<sub_charsheet name="actions">
-				<class>charsheet_actions</class>
-			</sub_charsheet>
-			
-			<!-- The Tabs -->
-			
-			<tabs_charsheet>
-				<tab>
-					<icon>tab_main</icon>
-					<subwindow>main</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_skills</icon>
-					<subwindow>skills</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_abilities</icon>
-					<subwindow>abilities</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_inventory</icon>
-					<subwindow>inventory</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_notes</icon>
-					<subwindow>notes</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_log</icon>
-					<subwindow>logs</subwindow>
-				</tab>
-				<tab>
-					<icon>tab_actions</icon>
-					<subwindow>actions</subwindow>
-				</tab>
-				<activate>1</activate>
-			</tabs_charsheet>
 
 			<close_charsheet />
 			<resize_charsheet />
