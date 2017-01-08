@@ -7,7 +7,6 @@
 local bVisibility = nil;
 local nLevel = 1;
 local aTargetPath = {};
-local cTarget = nil;
 
 function onInit()
 	for sWord in string.gmatch(target[1], "([%w_]+)") do
@@ -17,9 +16,6 @@ function onInit()
 		bVisibility = true;
 	elseif collapse then
 		bVisibility = false;
-	end
-	if ctarget and ctarget[1] then
-		cTarget = ctarget[1];
 	end
 	if togglelevel then
 		nLevel = tonumber(togglelevel[1]) or 0;
@@ -34,7 +30,6 @@ function onButtonPress()
 end
 
 function applyTo(vTarget, nIndex)
-
 	if nIndex > nLevel then
 		vTarget.setVisible(bVisibility);
 	end
@@ -45,13 +40,9 @@ function applyTo(vTarget, nIndex)
 	end
 
 	local sTargetType = type(vTarget);
-	
 	if sTargetType == "windowlist" then
 		for _,wChild in pairs(vTarget.getWindows()) do
 			applyTo(wChild[aTargetPath[nIndex]], nIndex);
-			if cTarget and wChild[cTarget] then
-				applyTo(wChild[cTarget], nIndex);
-			end
 		end
 	elseif sTargetType == "subwindow" then
 		applyTo(vTarget.subwindow[aTargetPath[nIndex]], nIndex);

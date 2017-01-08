@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	<!-- Chat Window -->
+	<panel name="chat">
+		<class>chat</class>
+		<bounds>
+			<rect>15,122,390,-245</rect>
+		</bounds>
+	</panel>
+
+	<!-- Shortcuts -->
+	<panel name="shortcuts">
+		<class>shortcuts</class>
+		<bounds>
+			<anchored>
+				<top>
+					<anchor>top</anchor>
+				</top>
+				<bottom>
+					<anchor>bottom</anchor>
+					<offset>-33</offset>
+				</bottom>
+				<right>
+					<anchor>right</anchor>
+				</right>
+				<size>
+					<width>98</width>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+	
+	<!-- Party Identity - now Starship-->
+	<panel name="partyidentity" modes="host,client">
+		<class>partyidentity</class>
+		<bounds>
+			<anchored>
+				<top>
+					<anchor>top</anchor>
+					<offset>13</offset>
+				</top>
+				<left>
+					<anchor>left</anchor>
+					<offset>14</offset>
+				</left>
+				<size>
+					<height>66</height>
+					<width>96</width>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+
+	<!-- Character List -->
+	<panel name="characterlist" modes="host,client">
+		<class>characterlist</class>
+		<bounds>
+			<anchored>
+				<top>
+					<anchor>top</anchor>
+					<offset>13</offset>
+				</top>
+				<left>
+					<anchor>left</anchor>
+					<offset>80</offset> <!-- was 80-->
+				</left>
+				<right>
+					<parent>shortcuts</parent>
+					<anchor>left</anchor>
+				</right>
+				<size>
+					<height>102</height>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+	
+	<!-- Identity List -->
+	<panel name="identitylist" modes="host">
+		<class>identitylist</class>
+		<bounds>
+			<anchored>
+				<bottom>
+					<anchor>bottom</anchor>
+					<offset>-45</offset>
+				</bottom>
+				<right>
+					<parent>shortcuts</parent>
+					<anchor>left</anchor>
+				</right>
+				<left>
+					<anchor>left</anchor>
+					<offset>8</offset>
+				</left>
+				<size>
+					<height>20</height>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+
+	<!-- Modified Stack -->
+	<panel name="modifierstack">
+		<class>modifierstack</class>
+		<bounds>
+			<anchored>
+				<top>
+					<anchor>bottom</anchor>
+					<offset>-128</offset>
+				</top>
+				<left>
+					<anchor>left</anchor>
+					<offset>15</offset>
+				</left>
+				<size>
+					<width>64</width>
+					<height>57</height>
+				</size>
+			</anchored>
+		</bounds>
+	</panel>
+		
+	<!-- Dice Tower -->
+	<panel name="dicetower" modes="host,client">
+		<class>dicetower</class>
+		<dynamic />		
+		<bounds>
+			<rect>-181,10,72,72</rect>
+		</bounds>
+	</panel>	
+	
+</root>

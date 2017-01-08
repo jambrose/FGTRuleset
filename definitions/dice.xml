@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--MODS: Moved the non custom dice to the bottom right of the desktop.  These dice aren't needed in normal play of Star Wars: EotE,
+ but it is nice to have them available just in case - d10 left in normal place so that % can be rolled.
+-->
+<root>
+
+	<!-- d6 -->
+	<die name="d6">
+		<icon>d6icon</icon>
+		<position>110,-103</position>
+	</die>
+	<die name="d6.1"><icon>d6icon.1</icon></die>
+	<die name="d6.2"><icon>d6icon.2</icon></die>
+	<die name="d6.3"><icon>d6icon.3</icon></die>
+	<die name="d6.4"><icon>d6icon.4</icon></die>
+	<die name="d6.5"><icon>d6icon.5</icon></die>
+	<die name="d6.6"><icon>d6icon.6</icon></die>
+	
+	<!-- d3 -->
+	<customdie name="d3">
+		<model>d6</model>
+		<menuicon>customdice</menuicon>
+		<script>
+			function onValue(result)
+				return math.ceil(result/2);
+			end
+		</script>
+	</customdie>	
+	<die name="d3.1"><icon>d3icon.1</icon></die>
+	<die name="d3.2"><icon>d3icon.2</icon></die>
+	<die name="d3.3"><icon>d3icon.3</icon></die>	
+	
+
+	<!-- d100 -->
+	<die name="d100">
+		<icon>d10icon</icon>	
+	</die>
+	<die name="d100.0"><icon>d100icon.0</icon></die>
+	<die name="d100.10"><icon>d100icon.10</icon></die>
+	<die name="d100.20"><icon>d100icon.20</icon></die>
+	<die name="d100.30"><icon>d100icon.30</icon></die>
+	<die name="d100.40"><icon>d100icon.40</icon></die>
+	<die name="d100.50"><icon>d100icon.50</icon></die>
+	<die name="d100.60"><icon>d100icon.60</icon></die>
+	<die name="d100.70"><icon>d100icon.70</icon></die>
+	<die name="d100.80"><icon>d100icon.80</icon></die>
+	<die name="d100.90"><icon>d100icon.90</icon></die>
+	
+	<!-- dm die -->
+	<die name="dmdie">
+		<icon>dmdieicon</icon>
+	</die>	
+
+</root>

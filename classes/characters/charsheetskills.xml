@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+<!-- SKILL -->
+	<windowclass name="charsheet_skills_skillsmall">
+		<sizelimits>
+			<minimum>
+				<height>20</height>
+			</minimum>
+		</sizelimits>
+		<sheetdata>
+			<sheetnumberfield name="advances">
+				<bounds>-54,0,36,20</bounds>
+				<!--<disabled/>-->
+			</sheetnumberfield>
+			<skilldicepool>
+				<bounds>-16,0,20,20</bounds>
+			</skilldicepool>		
+			<windowbutton name="open">
+				<bounds>0,0,20,20</bounds>
+				<class>skill</class>
+			</windowbutton>
+			<checkbox name="skillcheck" source="skillcheck">
+				<anchored to="open" width="14" height="14">
+					<left anchor="right" relation="relative"/>
+					<top offset="3"/>
+				</anchored>
+				<tooltip>
+					<text>Career Skill?</text>
+				</tooltip>
+				<script>
+					function onInit()
+						if super.onInit then super.onInit() end
+						
+						if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+							if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+								setVisible(true);
+								setTooltipText("Minion skill?");
+							else
+								setVisible(false);
+							end
+						end
+						
+					end
+					
+					function onValueChanged()
+						if window.windowlist.window.parentcontrol.window.getClass() == "npc" then
+							if string.lower(window.windowlist.window.parentcontrol.window.main_npc_category.getValue()) == "minion" then
+								MinionManager.updateSkill(window.getDatabaseNode());
+							end
+						end
+					end
+				</script>
+				<!--<invisible/>-->
+			</checkbox>				
+			<basestringfield name="name">
+				<anchored to="open" height="14">
+					<left anchor="right" relation="relative" offset="3"/>
+					<top offset="3"/>
+				</anchored>
+				<anchored>
+					<right parent="advances" anchor="left" offset="-3"/>
+				</anchored>					
+<!--				<anchored to="advances">
+					<right anchor="left" offset="3"/>
+				</anchored>	-->			
+				<!--<bounds>21,3,-80,17</bounds>-->
+				<empty>&#171; New Skill &#187;</empty>
+				<disabled />				
+			</basestringfield>			
+		</sheetdata>
+	</windowclass>
+
+<!-- WINDOW -->
+	<windowclass name="charsheetskills">
+		<placement>
+			<size>
+				<width>509</width>
+				<height>557</height>
+			</size>
+		</placement>
+		<nodelete />
+		<sheetdata>
+		
+<!-- CHARACTERISTICS -->
+			<sheetframe name="main_characteristics">
+				<bounds>14,5,351,87</bounds>
+				<frame>
+					<name>sheetgroup</name>
+				</frame>		
+			</sheetframe>
+			<sheetframetitle name="main_characteristics_title">
+				<anchored>
+					<to>main_characteristics</to>
+				</anchored>
+				<static>Characteristics</static>
+			</sheetframetitle>
+
+			<!-- STRENGTH -->
+			<sheetcharacteristicvalue name="main_characteristics_strength_current" source="strength.current">
+				<anchored>
+					<to>main_characteristics</to>
+					<offset>17,24</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_strength_bonus</next>
+					<prev>main_character_eyes</prev>
+				</tabtarget>
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_strength_bonus" source="strength.bonus">
+				<anchored>
+					<to>main_characteristics_strength_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_dexterity_current</next>
+					<prev>main_characteristics_strength_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_strength_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>
+					</top>
+					<left>
+						<parent>main_characteristics_strength_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_strength_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Strength</static>
+			</sheettitle>
+
+			<!-- Dexterity -->
+			<sheetcharacteristicvalue name="main_characteristics_dexterity_current" source="dexterity.current">
+				<anchored>
+					<to>main_characteristics</to>
+					<offset>73,24</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_dexterity_bonus</next>
+					<prev>main_characteristics_strength_bonus</prev>
+				</tabtarget>				
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_dexterity_bonus" source="dexterity.bonus">
+				<anchored>
+					<to>main_characteristics_dexterity_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_endurance_current</next>
+					<prev>main_characteristics_dexterity_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_dexterity_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>						
+					</top>
+					<left>
+						<parent>main_characteristics_dexterity_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_dexterity_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Dexterity</static>
+			</sheettitle>
+		
+			<!-- Endurance-->
+			<sheetcharacteristicvalue name="main_characteristics_endurance_current" source="endurance.current">
+				<anchored>
+					<to>main_characteristics</to>
+					<offset>129,24</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_endurance_bonus</next>
+					<prev>main_characteristics_dexterity_bonus</prev>
+				</tabtarget>				
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_endurance_bonus" source="endurance.bonus">
+				<anchored>
+					<to>main_characteristics_endurance_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_intellect_current</next>
+					<prev>main_characteristics_endurance_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_endurance_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>						
+					</top>
+					<left>
+						<parent>main_characteristics_endurance_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_endurance_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Endurance</static>
+			</sheettitle>			
+			<!-- INTELLECT-->
+			<sheetcharacteristicvalue name="main_characteristics_intellect_current" source="intellect.current">
+				<anchored>
+					<to>main_characteristics</to>
+					<offset>185,24</offset>
+			
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_intellect_bonus</next>
+					<prev>main_characteristics_endurance_bonus</prev>
+				</tabtarget>				
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_intellect_bonus" source="intellect.bonus">
+				<anchored>
+					<to>main_characteristics_intellect_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_education_current</next>
+					<prev>main_characteristics_intellect_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_intellect_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>						
+					</top>
+					<left>
+						<parent>main_characteristics_intellect_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_intellect_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Intellect</static>
+			</sheettitle>
+			<!-- Education-->
+			<sheetcharacteristicvalue name="main_characteristics_education_current" source="education.current">
+				<anchored>
+					<to>main_characteristics</to>
+					<offset>241,24</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_education_bonus</next>
+					<prev>main_characteristics_intellect_bonus</prev>
+				</tabtarget>				
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_education_bonus" source="education.bonus">
+				<anchored>
+					<to>main_characteristics_education_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_social_current</next>
+					<prev>main_characteristics_education_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_education_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>						
+					</top>
+					<left>
+						<parent>main_characteristics_education_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_education_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Education</static>
+			</sheettitle>			
+			
+			<!-- social-->
+			<sheetcharacteristicvalue name="main_characteristics_social_current" source="social.current">
+				<anchored>
+					<to>main_characteristics</to>
+					<offset>297,24</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_social_bonus</next>
+					<prev>main_characteristics_education_bonus</prev>
+				</tabtarget>				
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_social_bonus" source="social.bonus">
+				<anchored>
+					<to>main_characteristics_social_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+				<tabtarget>
+					<next>main_characteristics_stance_conservative</next>
+					<prev>main_characteristics_social_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_social_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>						
+					</top>
+					<left>
+						<parent>main_characteristics_social_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_social_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>Social</static>
+			</sheettitle>
+			
+			<!-- INITIATIVE -->
+			<sheetframe name="combat_init">
+				<bounds>363,5,120,87</bounds>
+			</sheetframe>
+			<sheetframetitle name="combat_init_title">
+				<anchored>
+					<to>combat_init</to>
+				</anchored>
+				<static>Initiative</static>
+			</sheetframetitle>
+								
+			<!-- SKILLS --> 
+			<sheetframe name="skills_basic">
+				<!--<bounds>12,166,238,380</bounds>-->
+				<bounds>14,88,-25,-10</bounds>
+			</sheetframe>
+			<sheetframetitle name="skills_basic_title">
+				<anchored>
+					<to>skills_basic</to>
+				</anchored>
+				<static>Skills</static>
+			</sheetframetitle>
+			
+			<!-- SKILLS -->
+			<sheetlist name="skills_basic_skills">
+				<anchored>
+					<left>
+						<parent>skills_basic</parent>
+						<anchor>left</anchor>
+						<offset>12</offset>					
+					</left>
+					<right>
+						<parent>skills_basic</parent>
+						<anchor>right</anchor>
+						<offset>-13</offset>					
+					</right>
+					<top>
+						<parent>skills_basic</parent>
+						<anchor>top</anchor>
+						<offset>18</offset>
+					</top>
+					<bottom>
+						<parent>skills_basic</parent>
+						<anchor>bottom</anchor>
+						<offset>-13</offset>
+					</bottom>
+				</anchored>
+				<datasource>.skills</datasource>
+				<class>charsheet_skills_skillsmall</class>
+<!--				<allowcreate />-->
+				<allowdelete />
+				<script>
+					<!-- function onFilter(w)				 -->
+						<!-- local windownode = w.getDatabaseNode(); -->
+						<!-- if windownode then -->
+							<!-- local advancednode = windownode.getChild("advanced"); -->
+							<!-- if advancednode and advancednode.getValue() == 1 then -->
+								<!-- return false; -->
+							<!-- end -->
+							<!-- local knowledgenode = windownode.getChild("knowledge"); -->
+							<!-- if knowledgenode and knowledgenode.getValue() == 1 then -->
+								<!-- return false; -->
+							<!-- end							 -->
+						<!-- end -->
+						<!-- return true;					 -->
+					<!-- end -->
+					
+					function onInit()
+						local node = getDatabaseNode();
+						if node and node.isOwner() then
+							registerMenuItem("Create Item", "insert", 5);						
+						end
+						
+						local skillsnode = window.getDatabaseNode().getChild("skills");
+						if skillsnode then
+							local skillautocreated = skillsnode.createChild("..skillsautogenerated", "number");
+							if skillautocreated.getValue() ~= 1 then
+								for k,v in pairs(DataCommon.basicskilldata) do
+									local skillnode = skillsnode.createChild();
+									skillnode.createChild("name","string").setValue(k);					
+									skillnode.createChild("description","formattedtext").setValue(v.description);
+								end
+								skillsnode.getChild("..skillsautogenerated").setValue(1);
+							end
+						end		
+					end
+
+					function onMenuSelection(selection)
+						if selection == 5 then
+							local node = getDatabaseNode();
+							if node and node.isOwner() then
+								local child = node.createChild();
+							end
+						end
+					end						
+					
+					function onDrop(x, y, draginfo)
+						local type = draginfo.getType();
+						if type == "shortcut" then
+							local class, recordname = draginfo.getShortcutData();
+							if class == "skill" then
+								local recordnode = DB.findNode(recordname)
+								if recordnode and not recordnode.isStatic() and recordnode.isOwner() then
+									if string.find(recordnode.getNodeName(), window.getDatabaseNode().getNodeName(), 1, true) then
+										recordnode.createChild("advanced", "number").setValue(0);
+										return true;
+									end
+								end
+							end
+						end
+					end						
+				</script>
+			</sheetlist>
+			<scrollbar>
+				<anchored>
+					<to>skills_basic_skills</to>
+					<offset>-3,-2</offset>
+				</anchored>
+				<target>skills_basic_skills</target>
+			</scrollbar>			
+		</sheetdata>
+	</windowclass>
+</root>
