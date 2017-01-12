@@ -3,7 +3,7 @@
 	<includefile source="definitions/categoryselectionsettings.xml" />
 	<includefile source="definitions/desktop.xml" />
 	<includefile source="definitions/dice.xml" />
-	<includefile source="definitions/diebox.xml" />
+	<!-- <includefile source="definitions/diebox.xml" /> -->
 	<includefile source="definitions/hotkeybar.xml" />
 	<includefile source="definitions/pollbox.xml" />
 	<includefile source="definitions/portraitsets.xml" />

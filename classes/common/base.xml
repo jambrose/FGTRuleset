@@ -71,6 +71,6 @@
 	
 	<includefile source="classes/common/button_stringcycler.xml" />
 	<includefile source="classes/common/button_iconcycler.xml" />
-	
+	<includefile source="classes/common/button_abilitycycler.xml" />
 	<script name="DataCommon" file="classes/common/data_common.lua" />
 </root>

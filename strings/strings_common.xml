@@ -15,6 +15,53 @@
 	<string name="tooltip_modinstallfailed">Failed to install mod - cannot try again</string>
 	<string name="tooltip_vehicle_token">Drag the vehicle token here</string>
 	<string name="npc_vehicle_clear">Clear vehicle details</string>
+	<string name="dash">-</string>
+	
+	<!-- Characteristics -->
+	<string name="Str">Str</string>
+	<string name="Dex">Dex</string>
+	<string name="End">End</string>
+	<string name="Int">Int</string>
+	<string name="Edu">Edu</string>
+	<string name="Soc">Soc</string>
+	<string name="Psi">Psi</string>
+	<string name="STR">STR</string>
+	<string name="DEX">DEX</string>
+	<string name="END">END</string>
+	<string name="INT">INT</string>
+	<string name="EDU">EDU</string>
+	<string name="SOC">SOC</string>
+	<string name="PSI">PSI</string>
+	<string name="str">str</string>
+	<string name="dex">dex</string>
+	<string name="end">end</string>
+	<string name="int">int</string>
+	<string name="edu">edu</string>
+	<string name="soc">soc</string>
+	<string name="psi">psi</string>
+	<string name="Strength">Strength</string>
+	<string name="Dexterity">Dexterity</string>
+	<string name="Endurance">Endurance</string>
+	<string name="Intellect">Intellect</string>
+	<string name="Education">Education</string>
+	<string name="Social">Social</string>
+	<string name="Psionics">Psionics</string>
+	<string name="STRENGTH">STRENGTH</string>
+	<string name="DEXTERITY">DEXTERITY</string>
+	<string name="ENDURANCE">ENDURANCE</string>
+	<string name="INTELLECT">INTELLECT</string>
+	<string name="EDUCATION">EDUCATION</string>
+	<string name="SOCIAL">SOCIAL</string>
+	<string name="PSIONICS">PSIONICS</string>
+	<string name="strength">strength</string>
+	<string name="dexterity">dexterity</string>
+	<string name="endurance">endurance</string>
+	<string name="intellect">intellect</string>
+	<string name="education">education</string>
+	<string name="social">social</string>
+	<string name="psionics">psionics</string>
+	
+	
 	
 	<!--Images-->
 	<string name="image_menu_size">Resize</string>

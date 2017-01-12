@@ -84,8 +84,8 @@
 					</size>
 				</anchored>
 				<static>Characteristic</static>
-			</sheetlabel>			
-			<characteristicselector name="main_main_characteristic">
+			</sheetlabel>		
+			<cycler_ability name="characteristic">
 				<sourcename>characteristic</sourcename>
 				<align>right</align>
 				<anchored>
@@ -104,44 +104,10 @@
 						<height>20</height>
 					</size>
 				</anchored>
-				<tabtarget>
-					<next>main_main_quality</next>
-					<prev>main_name_name</prev>
-				</tabtarget>
-			</characteristicselector>
-			
-			<!-- ADVANCES -->
-			<!--<sheetlabel>
-				<anchored>
-					<to>main_details</to>
-					<offset>13,38</offset>
-					<size>
-						<width>209</width>
-					</size>
-				</anchored>
-				<static>Advances Taken</static>
-			</sheetlabel>				
-			<skillnumberfield name="main_advances">
-				<sourcename>advances</sourcename>
-				<anchored>
-					<top>
-						<parent>main_details</parent>
-						<anchor>top</anchor>
-						<offset>38</offset>
-					</top>
-					<right>
-						<parent>main_details</parent>
-						<anchor>right</anchor>
-						<offset>-11</offset>
-					</right>
-					<size>
-						<width>36</width>
-						<height>20</height>
-					</size>
-				</anchored>
-			</skillnumberfield> -->
 
-			<!-- Advanced now labelled Knowledge-->
+			</cycler_ability>
+			
+			<!-- Training -->
 			<sheetlabel>
 				<anchored>
 					<to>main_details</to>
@@ -150,10 +116,10 @@
 						<width>209</width>
 					</size>
 				</anchored>
-				<static>Knowledge Skill</static>
+				<static>Training Weeks</static>
 			</sheetlabel>
-			<checkbox name="knowledge_skill">
-				<sourcename>knowledge</sourcename>
+			<basenumberfield name="trained_weeks">
+				<sourcename>trained_weeks</sourcename>
 				<anchored>
 					<top>
 						<parent>main_details</parent>
@@ -163,46 +129,44 @@
 					<right>
 						<parent>main_details</parent>
 						<anchor>right</anchor>
-						<offset>-11</offset>
+						<offset>-47</offset>
 					</right>
 					<size>
 						<width>36</width>
 						<height>20</height>
 					</size>
 				</anchored>
-			</checkbox>	
-
-			
-			<!-- Advanced now labelled Combat-->
+			</basenumberfield>	
 			<sheetlabel>
 				<anchored>
-					<to>main_details</to>
-					<offset>17,58</offset>
+					<to>trained_weeks</to>
+					<offset>30,0</offset>
 					<size>
-						<width>209</width>
+						<width>10</width>
 					</size>
 				</anchored>
-				<static>Combat Skill</static>
+				<static> / </static>
 			</sheetlabel>
-			<checkbox name="main_advances">
-				<sourcename>advanced</sourcename>
+			<basenumberfield name="weeks_to_complete">
+				<sourcename>weeks_to_complete</sourcename>
 				<anchored>
 					<top>
 						<parent>main_details</parent>
 						<anchor>top</anchor>
-						<offset>58</offset>
+						<offset>38</offset>
 					</top>
 					<right>
 						<parent>main_details</parent>
 						<anchor>right</anchor>
-						<offset>-11</offset>
+						<offset>-17</offset>
 					</right>
 					<size>
 						<width>36</width>
 						<height>20</height>
 					</size>
 				</anchored>
-			</checkbox>			
+			</basenumberfield>	
+			
 			
 <!-- DESCRIPTION -->
 			<sheetframe name="main_description">

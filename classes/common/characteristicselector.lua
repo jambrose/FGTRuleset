@@ -30,7 +30,7 @@ function onInit()
 	
 		-- set the sourcenode default value
 		if sourcenode.getValue() == "" then
-			sourcenode.setValue("BR");
+			sourcenode.setValue("STR");
 		end
 	
 		-- subscribe to the sourcenode update event
@@ -81,20 +81,20 @@ function onClickDown(button, x, y)
 			if not sourcenode.isStatic() then
 				if sourcenode.isOwner() then
 					local value = sourcenode.getValue();
-					if value == "BR" then
-						sourcenode.setValue("AG");
-					elseif value == "AG" then
-						sourcenode.setValue("IN");
-					elseif value == "IN" then
-						sourcenode.setValue("CU");
-					elseif value == "CU" then
-						sourcenode.setValue("WI");
-					elseif value == "WI" then
-						sourcenode.setValue("PR");
-					elseif value == "PR" then
-						sourcenode.setValue("BR");
+					if value == "STR" then
+						sourcenode.setValue("DEX");
+					elseif value == "DEX" then
+						sourcenode.setValue("END");
+					elseif value == "END" then
+						sourcenode.setValue("INT");
+					elseif value == "INT" then
+						sourcenode.setValue("EDU");
+					elseif value == "EDU" then
+						sourcenode.setValue("SOC");
+					elseif value == "SOC" then
+						sourcenode.setValue("STR");
 					else
-						sourcenode.setValue("BR");
+						sourcenode.setValue("STR");
 					end
 				end
 			end

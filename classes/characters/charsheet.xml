@@ -106,30 +106,30 @@
 				</anchored>
 				<label>Gender</label>
 				<tabtarget>
-					<next>main_character_career</next>
+					<next>main_character_age</next>
 					<prev>main_character_race</prev>
 				</tabtarget>
 			</sheetstringfield>			
 			
-			<!-- AGE now CAREER-->
-			<sheetstringfield name="main_character_career" source="career">
+			<!-- AGE-->
+			<sheetstringfield name="main_character_age" source="age">
 				<anchored>
 					<to>main_character</to>
 					<position>insidetopleft</position>					
 					<offset>17,38</offset>
 					<size>
-						<width>150</width>
+						<width>45</width>
 					</size>
 				</anchored>
-				<label>Career</label>
+				<label>Age</label>
 				<tabtarget>
-					<next>main_character_specializations</next>
+					<next>main_character_homeworld</next>
 					<prev>main_character_gender</prev>
 				</tabtarget>
 			</sheetstringfield>			
 
 			<!-- Career specialisations -->
-			<sheetstringfield name="main_character_specializations" source="specializations">
+			<sheetstringfield name="main_character_homeworld" source="homeworld">
 				<anchored>
 					<to>main_character</to>
 					<position>insidetopleft</position>					
@@ -138,9 +138,9 @@
 						<width>215</width>
 					</size>
 				</anchored>
-				<label>Career Specializations</label>
+				<label>Homeworld</label>
 				<tabtarget>
-					<prev>main_character_career</prev>
+					<prev>main_character_age</prev>
 				</tabtarget>
 			</sheetstringfield>						
 			
@@ -196,11 +196,6 @@
 				<class>charsheetcombattab</class>
 				<!--<script file="classes/characters/charsheet.lua" />-->
 			</subwindow>			
-			<subwindow name="talents">
-				<bounds>0,60,-1,-1</bounds>
-				<class>charsheettalents</class>
-				<!--<script file="classes/characters/charsheet.lua" />-->
-			</subwindow>			
 			<subwindow name="inventory">
 				<bounds>0,75,-1,-1</bounds>
 				<class>charsheetinventory</class>
@@ -243,14 +238,6 @@
 					<icon>tab_vehicle</icon>
 					<subwindow>vehicle</subwindow>
 				</tab>				
-<!--				<tab>
-					<icon>tab_talents</icon>
-					<subwindow>talents</subwindow>
-				</tab>					
-				<tab>
-					<icon>tab_actions</icon>
-					<subwindow>actions</subwindow>
-				</tab>-->		
 				<activate>1</activate>
 			</tabcontrol>
 			<closebutton />

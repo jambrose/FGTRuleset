@@ -1,54 +1,130 @@
-function onDrop(abilitynode, x, y, draginfo)
+-- 
+-- Please see the license.html file included with this distribution for 
+-- attribution and copyright information.
+--
+-- From action_ability_manager
 
-	-- Chits
-	if draginfo.isType("chit") then
-		if draginfo.getCustomData() == "recharge" then
-			return addRecharge(abilitynode);
-		end		
-	end
+function onInit()
+	ActionsManager.registerModHandler("ability", modRoll);
+	ActionsManager.registerResultHandler("ability", onRoll);
 end
 
-function addRecharge(abilitynode)
-	if abilitynode.isOwner() then
-		local socketednode = abilitynode.getChild("socketed");
-		if socketednode and socketednode.getValue() ~= 0 then
+function getRoll(rActor, sAbilityStat, nTargetDC, bSecretRoll)
+	local rRoll = {};
+	rRoll.sType = "ability";
+	rRoll.aDice = { "d20" };
+	rRoll.nMod = ActorManager2.getAbilityBonus(rActor, sAbilityStat);
+	
+	rRoll.sDesc = "[ABILITY]";
+	rRoll.sDesc = rRoll.sDesc .. " " .. StringManager.capitalize(sAbilityStat);
+	rRoll.sDesc = rRoll.sDesc .. " check";
+
+	rRoll.bSecret = bSecretRoll;
+
+	rRoll.nTarget = nTargetDC;
+	
+	return rRoll;
+end
+
+function performRoll(draginfo, rActor, sAbilityStat, nTargetDC, bSecretRoll)
+	local rRoll = getRoll(rActor, sAbilityStat, nTargetDC, bSecretRoll);
+	
+	ActionsManager.performAction(draginfo, rActor, rRoll);
+end
+
+-- Check to see if the roll is modified by anything
+function modRoll(rSource, rTarget, rRoll)
+	local aAddDesc = {};
+	local aAddDice = {};
+	local nAddMod = 0;
+	
+	if rSource then
+		local bEffects = false;
+
+		local sActionStat = nil;
+		local sAbility = string.match(rRoll.sDesc, "%[ABILITY%] (%w+) check");
+		if sAbility then
+			sAbility = string.lower(sAbility);
+		else
+			if string.match(rRoll.sDesc, "%[STABILIZATION%]") then
+				sAbility = "constitution";
+			end
+		end
+
+		-- GET ACTION MODIFIERS
+		local nEffectCount;
+		aAddDice, nAddMod, nEffectCount = EffectManager.getEffectsBonus(rSource, {"ABIL"}, false, {sAbility});
+		if (nEffectCount > 0) then
+			bEffects = true;
+		end
 		
-			-- attempt to get the parent character slots node
-			local characterslotsnode = abilitynode.getParent().getParent().getChild("slots");
-			if characterslotsnode then
-				for k, v in pairs(characterslotsnode.getChildren()) do
-					local recordnamenode = v.getChild("recordname");
-					if recordnamenode then
-						local recordname = recordnamenode.getValue();
-						if recordname == abilitynode.getNodeName() then
-							local rechargenode = v.createChild("currentrecharge", "number");
-							if rechargenode and rechargenode.isOwner() then
-								rechargenode.setValue(rechargenode.getValue() + 1);
-								return true;
-							end
-						end
-					end
-				end		
+		-- GET CONDITION MODIFIERS
+		if EffectManager.hasEffectCondition(rSource, "Frightened") or 
+				EffectManager.hasEffectCondition(rSource, "Panicked") or
+				EffectManager.hasEffectCondition(rSource, "Shaken") then
+			nAddMod = nAddMod - 2;
+			bEffects = true;
+		end
+		if EffectManager.hasEffectCondition(rSource, "Sickened") then
+			nAddMod = nAddMod - 2;
+			bEffects = true;
+		end
+
+		-- GET STAT MODIFIERS
+		local nBonusStat, nBonusEffects = ActorManager2.getAbilityEffectsBonus(rSource, sAbility);
+		if nBonusEffects > 0 then
+			bEffects = true;
+			nAddMod = nAddMod + nBonusStat;
+		end
+		
+		-- HANDLE NEGATIVE LEVELS
+		local nNegLevelMod, nNegLevelCount = EffectManager.getEffectsBonus(rSource, {"NLVL"}, true);
+		if nNegLevelCount > 0 then
+			nAddMod = nAddMod - nNegLevelMod;
+			bEffects = true;
+		end
+
+		-- IF EFFECTS HAPPENED, THEN ADD NOTE
+		if bEffects then
+			local sEffects = "";
+			local sMod = StringManager.convertDiceToString(aAddDice, nAddMod, true);
+			if sMod ~= "" then
+				sEffects = "[" .. Interface.getString("effects_tag") .. " " .. sMod .. "]";
+			else
+				sEffects = "[" .. Interface.getString("effects_tag") .. "]";
 			end
-			
-			-- if we got this far, then the ability must be socketed to the party sheet
-			local partyslotsnode = DB.findNode("partysheet.slots");
-			if partyslotsnode then
-				for k, v in pairs(partyslotsnode.getChildren()) do
-					local recordnamenode = v.getChild("recordname");
-					if recordnamenode then
-						local recordname = recordnamenode.getValue();
-						if recordname == abilitynode.getNodeName() then
-							local rechargenode = v.createChild("currentrecharge", "number");
-							if rechargenode and rechargenode.isOwner() then
-								rechargenode.setValue(rechargenode.getValue() + 1);
-								return true;
-							end
-						end
-					end
-				end	
-			end
-			
+			table.insert(aAddDesc, sEffects);
 		end
 	end
+	
+	if #aAddDesc > 0 then
+		rRoll.sDesc = rRoll.sDesc .. " " .. table.concat(aAddDesc, " ");
+	end
+	for _,vDie in ipairs(aAddDice) do
+		if vDie:sub(1,1) == "-" then
+			table.insert(rRoll.aDice, "-p" .. vDie:sub(3));
+		else
+			table.insert(rRoll.aDice, "p" .. vDie:sub(2));
+		end
+	end
+	rRoll.nMod = rRoll.nMod + nAddMod;
 end
+
+function onRoll(rSource, rTarget, rRoll)
+	local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
+
+	if rRoll.nTarget then
+		local nTotal = ActionsManager.total(rRoll);
+		local nTargetDC = tonumber(rRoll.nTarget) or 0;
+		
+		rMessage.text = rMessage.text .. " (vs. DC " .. nTargetDC .. ")";
+		if nTotal >= nTargetDC then
+			rMessage.text = rMessage.text .. " [SUCCESS]";
+		else
+			rMessage.text = rMessage.text .. " [FAILURE]";
+		end
+	end
+	
+	Comm.deliverChatMessage(rMessage);
+end
+

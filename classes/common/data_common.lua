@@ -11,18 +11,45 @@ basicskilldata = {
 			description = "<p>Advocate gives a knowledge of common legal codes and practises, especially interstellar law. It also gives the Traveller experience in oratory, debate and public speaking, making it an excellent skill for lawyers and politicians.</p>"
 		},	
 	["Animals"] = {
-			specialities = true,
+			specialities = {
+				["Handling"] = {
+					description = "<p>The Traveller knows how to handle an animal and ride those trained to bear a rider. Unusual animals raise the difficulty of the check.</p>"
+				},
+				["Veterinary"] = {
+					description = "<p>The Traveller is trained in veterinary medicine and animal care.</p>"
+				},
+				["Training"] = {
+					description = "<p>The Traveller knows how to tame and train animals.</p>"
+				}
+			},
 			canaddspecialities = 0,
 			description = "<p>This skill, rare on industrialised or technologically advanced worlds, is for the care of animals.</p>"
 		},
+	["Athletics"] = {
+			specialities = {
+				["dexterity"] = {
+					description = "<p></p>"
+				},
+				["endurance"] = {
+					description = "<p></p>"
+				},
+				["strength"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
+			description = "<p></p>"
+		},
 	["Art"] = {
+			specialities = {
+				[""] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 1,
 			description = "<p></p>"
 		},
 	["Astrogation"] = {
-			description = "<p></p>"
-		},
-	["Athletics"] = {
-			specialities = {},
 			description = "<p></p>"
 		},
 	["Broker"] = {
@@ -39,37 +66,135 @@ basicskilldata = {
 			description = "<p></p>"			
 		},		
 	["Drive"] = {
-			specialities = {},
-			description = "<p></p>"
+			specialities = {
+				["Hovercraft"] = {
+					description = "<p></p>"
+				},
+				["Mole"] = {
+					description = "<p>For controlling vehicles that move through solid matter using drills or other earth-moving technologies, such as plasma torches or cavitation.</p>"
+				},
+				["Track"] = {
+					description = "<p></p>"
+				},
+				["Walker"] = {
+					description = "<p></p>"
+				},
+				["Wheel"] = {
+					description = "<p>For automobiles and similar groundcars.</p>"
+				}
+			},
+			canaddspecialities = 0,
+			description = "<p>This skill is for controlling ground vehicles of various types. There are several specialities.</p>"
 		},
 	["Electronics"] = {
-			specialities = {},
-			description = "<p></p>"
+			specialities = {
+				["Comms"] = {
+					description = "<p></p>"
+				},
+				["Computers"] = {
+					description = "<p></p>"
+				},
+				["Remote Ops"] = {
+					description = "<p></p>"
+				},
+				["Sensors"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
+			description = "<p>This skill is used to operate electronic devices such as computers and ship-board systems. Higher levels represent the ability to repair and create electronic devices and systems. There are several specialities</p>"
 		},		
 	["Engineer"] = {
-			specialities = {},
+			specialities = {
+				["M-drive"] = {
+					description = "<p></p>"
+				},
+				["J-drive"] = {
+					description = "<p></p>"
+				},
+				["Life Support"] = {
+					description = "<p></p>"
+				},
+				["Power"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Explosives"] = {
 			description = "<p></p>"
 		},
 	["Flyer"] = {
-			specialities = {},
+			specialities = {
+				["Airship"] = {
+					description = "<p></p>"
+				},
+				["Grav"] = {
+					description = "<p></p>"
+				},
+				["Ornithopter"] = {
+					description = "<p></p>"
+				},
+				["Ornithopter"] = {
+					description = "<p></p>"
+				},
+				["Wing"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Gambler"] = {
 			description = "<p></p>"
 		},
 	["Gunner"] = {
-			specialities = {},
+			specialities = {
+				["Turret"] = {
+					description = "<p></p>"
+				},
+				["Ortillery"] = {
+					description = "<p></p>"
+				},
+				["Screen"] = {
+					description = "<p></p>"
+				},
+				["Capital"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Gun Combat"] = {
-			specialities = {},
+			specialities = {
+				["Archaic"] = {
+					description = "<p></p>"
+				},
+				["Energy"] = {
+					description = "<p></p>"
+				},
+				["Energy"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Heavy Weapons"] = {
-			specialities = {},
+			specialities = {
+				["Artillery"] = {
+					description = "<p></p>"
+				},
+				["Man Portable"] = {
+					description = "<p></p>"
+				},
+				["Vehicle"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Investigate"] = {
@@ -79,7 +204,12 @@ basicskilldata = {
 			description = "<p></p>"
 		},
 	["Language"] = {
-			specialities = {},
+			specialities = {
+				[""] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 1,
 			description = "<p></p>"
 		},
 	["Leadership"] = {
@@ -92,7 +222,21 @@ basicskilldata = {
 			description = "<p></p>"
 		},
 	["Melee"] = {
-			specialities = {},
+			specialities = {
+				["Unarmed"] = {
+					description = "<p></p>"
+				},
+				["Blade"] = {
+					description = "<p></p>"
+				},
+				["Bludgeon"] = {
+					description = "<p></p>"
+				},
+				["Natural"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Navigation"] = {
@@ -102,22 +246,57 @@ basicskilldata = {
 			description = "<p></p>"
 		},
 	["Pilot"] = {
-			specialities = {},
+			specialities = {
+				["Small Craft"] = {
+					description = "<p></p>"
+				},
+				["Spacecraft"] = {
+					description = "<p></p>"
+				},
+				["Capital Ships"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Profession"] = {
-			specialities = {},
+			specialities = {
+				[""] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 1,
 			description = "<p></p>"
 		},
 	["Recon"] = {
 			description = "<p></p>"
 		},
 	["Science"] = {
-			specialities = {},
+			specialities = {
+				[""] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 1,
 			description = "<p></p>"
 		},
 	["Seafarer"] = {
-			specialities = {},
+			specialities = {
+				["Ocean Ships"] = {
+					description = "<p></p>"
+				},
+				["Personal"] = {
+					description = "<p></p>"
+				},
+				["Sail"] = {
+					description = "<p></p>"
+				},
+				["Submarine"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Stealth"] = {
@@ -133,24 +312,18 @@ basicskilldata = {
 			description = "<p></p>"
 		},
 	["Tactics"] = {
-			specialities = {},
+			specialities = {
+				["Military"] = {
+					description = "<p></p>"
+				},
+				["Naval"] = {
+					description = "<p></p>"
+				}
+			},
+			canaddspecialities = 0,
 			description = "<p></p>"
 		},
 	["Vacc Suit"] = {
 			description = "<p></p>"
 		}	
-};
-
-specialities = {
-	["Animals"] = {
-		["Handling"] = {
-			description = "<p>The Traveller knows how to handle an animal and ride those trained to bear a rider. Unusual animals raise the difficulty of the check.</p>"
-		},
-		["Veterinary"] = {
-			description = "<p>The Traveller is trained in veterinary medicine and animal care.</p>"
-		},
-		["Training"] = {
-			description = "<p>The Traveller knows how to tame and train animals.</p>"
-		}
-	}
 };

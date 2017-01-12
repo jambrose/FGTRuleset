@@ -126,6 +126,9 @@ function registerUpdate(nodeSource, nodeChild)
 end
 
 function initialize(sLabels, sValues, sDefaultLabel, sInitialValue)
+	
+	Debug.console("Initialise:  " .. sLabels);
+	
 	if sLabels then
 		labels = StringManager.split(sLabels, "|");
 	end
@@ -145,6 +148,7 @@ end
 
 function initialize2(sLabels, sValues, sDefaultLabel, sInitialValue)
 	if sLabels then
+		
 		labels = StringManager.split(sLabels, "|");
 		for k,v in ipairs(labels) do
 			labels[k] = Interface.getString(v);
@@ -152,6 +156,7 @@ function initialize2(sLabels, sValues, sDefaultLabel, sInitialValue)
 	end
 	
 	if sValues then
+
 		values = StringManager.split(sValues, "|");
 	end
 	

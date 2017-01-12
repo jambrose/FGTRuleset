@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
-	<includefile source="classes/characters/career.xml" />
-	<includefile source="classes/characters/careeradvances.xml" />
-	<includefile source="classes/characters/careermain.xml" />
+	<!-- <includefile source="classes/characters/career.xml" /> -->
+	<!-- <includefile source="classes/characters/careeradvances.xml" /> -->
+	<!-- <includefile source="classes/characters/careermain.xml" /> -->
 	<includefile source="classes/characters/charsheet.xml" />
 	<!-- <includefile source="classes/characters/charsheetactions.xml" /> -->
 	<includefile source="classes/characters/charsheetcombat.xml" />
@@ -35,7 +35,7 @@
 	<includefile source="classes/characters/skill.xml" />
 	<includefile source="classes/characters/skillmain.xml" />
 	<includefile source="classes/characters/skillspecialisations.xml" />
-	<includefile source="classes/characters/specialisation.xml" />
+	<!-- <includefile source="classes/characters/specialisation.xml" /> -->
 	<!-- <includefile source="classes/characters/initdicepool.xml" />	 -->
 
 	<includefile source="classes/characters/charsheetcombattab.xml" />	

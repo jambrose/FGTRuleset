@@ -27,12 +27,13 @@
 	<!-- <script name="DicePoolManager" file="managers/dicepoolmanager.lua" /> -->
 	<!-- <script name="DieBoxManager" file="managers/dieboxmanager.lua" /> -->
 	<script name="LanguageManager" file="managers/languagemanager.lua" />
-	
+
 	<script name="StringManager" file="managers/manager_string.lua" />
 	<!-- <script name="DieBoxViewListManager" file="managers/dieboxviewlistmanager.lua" /> -->
 	
 	<!-- <script name="MinionManager" file="managers/minionManager.lua" /> -->
 	<script name="PlayerDBManager" file="managers/playerdbmanager.lua" />
+	<script name="GameSystem" file="managers/managergamesystem.lua" />
 	playerdbmanager
 
 </root>

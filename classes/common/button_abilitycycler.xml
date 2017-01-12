@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+
+	<template name="cycler_ability">
+		<button_stringcycler>
+			<parameters>
+				<defaultlabelres mergerule="replace">dash</defaultlabelres>
+				<labelsres>Str|Dex|End|Int|Edu|Soc</labelsres>
+				<values>Strength|Dexterity|Endurance|Intellect|Education|Social</values>
+			</parameters>
+		</button_stringcycler>
+	</template>
+	
+</root>

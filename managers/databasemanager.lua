@@ -121,12 +121,6 @@ end
 
 function upgradeCharacter(characternode)
 
-	-- blessings
-	local blessingsnode = characternode.getChild("blessings");
-	if blessingsnode then
-		upgradeActions(blessingsnode);
-	end
-	
 	-- melee
 	local meleenode = characternode.getChild("melee");
 	if meleenode then
@@ -145,11 +139,6 @@ function upgradeCharacter(characternode)
 		upgradeActions(socialnode);
 	end
 	
-	-- spells
-	local spellsnode = characternode.getChild("spells");
-	if spellsnode then
-		upgradeActions(spellsnode);
-	end
 	
 	-- support
 	local supportnode = characternode.getChild("support");

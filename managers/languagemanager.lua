@@ -8,8 +8,8 @@ function onInit()
 	languagestrings["Version 1.0"] = "Version 1.0";
 	languagestrings["Created by Jack E. Ambrose"] = "Created by Jack E. Ambrose";
 	languagestrings["http://www.mongoosepublishing.com"] = "http://www.mongoosepublishing.com";
-	languagestrings["Based upon the 3.5e edition ruleset by Smiteworks Ltd."] = "Based upon the 3.5e edition ruleset by Smiteworks Ltd.";
-	languagestrings["This ruleset is not affiliated with, nor endorsed by, Games Workshop, Fantasy Flight Games, or Smiteworks Ltd."] = "This ruleset is not affiliated with, nor endorsed by, Games Workshop, Fantasy Flight Games, or Smiteworks Ltd.";
+	languagestrings["Based upon the 3.5e and CoreRPG edition ruleset by Smiteworks Ltd"] = "Based upon the 3.5e and CoreRPG edition ruleset by Smiteworks Ltd.";
+	languagestrings["This ruleset is not affiliated with, nor endorsed by, Games Workshop, Fantasy Flight Games, Mongoose Publishing, or Smiteworks Ltd."] = "This ruleset is not affiliated with, nor endorsed by, Games Workshop, Fantasy Flight Games, Mongoose Publishing, or Smiteworks Ltd.";
 	languagestrings["Name"] = "Name";
 	languagestrings["Species"] = "Species";
 	languagestrings["Gender"] = "Gender";
@@ -29,6 +29,7 @@ function onInit()
 	languagestrings["Social"] = "Social";
 	languagestrings["Psionic"] = "Psionic";
 	languagestrings["PSI"] = "PSI";
+	languagestrings["DEX"] = "DEX";
 	languagestrings["Total"] = "Total";
 	languagestrings["Spent"] = "Spent";
 	languagestrings["Remaining"] = "Remaining";
@@ -266,6 +267,11 @@ function onInit()
 	languagestrings["Vehicle"] = "Vehicle";
 	languagestrings["Class"] = "Class";
 	languagestrings["Manufacturer"] = "Manufacturer";
+	
+	-- Traveller
+	languagestrings["Homeworld"] = "Homeworld";
+	languagestrings["Training Weeks"] = "Training Weeks";
+	languagestrings["/"] = "/";
 	
 	
 end

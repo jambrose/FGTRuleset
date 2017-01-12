@@ -1,42 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
-
-<!-- CAREER -->
-	<windowclass name="charsheet_main_careersmall">
-		<sizelimits>
-			<minimum>
-				<height>20</height>
-			</minimum>
-		</sizelimits>
-		<sheetdata>
-			<windowbutton name="open">
-				<bounds>0,0,20,20</bounds>
-				<class>career</class>
-			</windowbutton>
-			<basestringfield name="name">
-				<bounds>21,3,-12,17</bounds>
-				<empty>&#171; New Career &#187;</empty>
-				<disabled />
-			</basestringfield>
-			<checkbox name="current">
-				<bounds>-12,4,12,12</bounds>
-				<script>
-					function setState(state)
-						if state then
-							local careers = window.windowlist.getWindows();
-							for k, v in ipairs(careers) do
-								if v.getDatabaseNode() ~= window.getDatabaseNode() then
-									v.getDatabaseNode().createChild("current", "number").setValue(0);
-								end
-							end
-							super.setState(state);
-						end
-					end
-				</script>
-			</checkbox>
-		</sheetdata>	
-	</windowclass>
-
 <!-- WINDOW -->
 	<windowclass name="charsheetmain">
 		<placement>
@@ -53,9 +16,9 @@
 		</script>
 		<sheetdata>
 		
-			<!-- CHARACTERISTICS -->
+<!-- CHARACTERISTICS -->
 			<sheetframe name="main_characteristics">
-				<bounds>14,5,351,87</bounds>
+				<bounds>14,5,470,87</bounds>
 				<frame>
 					<name>sheetgroup</name>
 				</frame>		
@@ -67,27 +30,23 @@
 				<static>Characteristics</static>
 			</sheetframetitle>
 
-			<!-- STRENGTH -->
-			<sheetcharacteristicvalue name="main_characteristics_strength_current" source="strength.current">
+<!-- STRENGTH -->
+			<sheetcharacteristicvalue name="main_characteristics_strength_current" source="characteristics.strength.current">
 				<anchored>
 					<to>main_characteristics</to>
 					<offset>17,24</offset>
 				</anchored>
 				<tabtarget>
-					<next>main_characteristics_strength_bonus</next>
-					<prev>main_character_eyes</prev>
+					<next>main_characteristics_dexterity_current</next>
+					<prev>main_characteristics_psi_current</prev>
 				</tabtarget>
 			</sheetcharacteristicvalue>
-			<sheetcharacteristicbonusvalue name="main_characteristics_strength_bonus" source="strength.bonus">
+			<sheetcharacteristicbonusvalue name="main_characteristics_strength_bonus" source="characteristics.strength.bonus">
 				<anchored>
 					<to>main_characteristics_strength_current</to>
 					<position>righthigh</position>
 					<offset>1,0</offset>
-				</anchored>
-				<tabtarget>
-					<next>main_characteristics_dexterity_current</next>
-					<prev>main_characteristics_strength_current</prev>
-				</tabtarget>				
+				</anchored>				
 			</sheetcharacteristicbonusvalue>
 			<sheettitle>
 				<anchored>
@@ -114,27 +73,23 @@
 				<static>Strength</static>
 			</sheettitle>
 
-			<!-- Dexterity -->
-			<sheetcharacteristicvalue name="main_characteristics_dexterity_current" source="dexterity.current">
+<!-- Dexterity -->
+			<sheetcharacteristicvalue name="main_characteristics_dexterity_current" source="characteristics.dexterity.current">
 				<anchored>
 					<to>main_characteristics</to>
 					<offset>73,24</offset>
 				</anchored>
 				<tabtarget>
-					<next>main_characteristics_dexterity_bonus</next>
-					<prev>main_characteristics_strength_bonus</prev>
+					<next>main_characteristics_endurance_current</next>
+					<prev>main_characteristics_strength_current</prev>
 				</tabtarget>				
 			</sheetcharacteristicvalue>
-			<sheetcharacteristicbonusvalue name="main_characteristics_dexterity_bonus" source="dexterity.bonus">
+			<sheetcharacteristicbonusvalue name="main_characteristics_dexterity_bonus" source="characteristics.dexterity.bonus">
 				<anchored>
 					<to>main_characteristics_dexterity_current</to>
 					<position>righthigh</position>
 					<offset>1,0</offset>
-				</anchored>
-				<tabtarget>
-					<next>main_characteristics_endurance_current</next>
-					<prev>main_characteristics_dexterity_current</prev>
-				</tabtarget>				
+				</anchored>			
 			</sheetcharacteristicbonusvalue>
 			<sheettitle>
 				<anchored>
@@ -161,27 +116,23 @@
 				<static>Dexterity</static>
 			</sheettitle>
 		
-			<!-- Endurance-->
-			<sheetcharacteristicvalue name="main_characteristics_endurance_current" source="endurance.current">
+<!-- Endurance-->
+			<sheetcharacteristicvalue name="main_characteristics_endurance_current" source="characteristics.endurance.current">
 				<anchored>
 					<to>main_characteristics</to>
 					<offset>129,24</offset>
 				</anchored>
 				<tabtarget>
-					<next>main_characteristics_endurance_bonus</next>
-					<prev>main_characteristics_dexterity_bonus</prev>
+					<next>main_characteristics_intellect_current</next>
+					<prev>main_characteristics_dexterity_current</prev>
 				</tabtarget>				
 			</sheetcharacteristicvalue>
-			<sheetcharacteristicbonusvalue name="main_characteristics_endurance_bonus" source="endurance.bonus">
+			<sheetcharacteristicbonusvalue name="main_characteristics_endurance_bonus" source="characteristics.endurance.bonus">
 				<anchored>
 					<to>main_characteristics_endurance_current</to>
 					<position>righthigh</position>
 					<offset>1,0</offset>
-				</anchored>
-				<tabtarget>
-					<next>main_characteristics_intellect_current</next>
-					<prev>main_characteristics_endurance_current</prev>
-				</tabtarget>				
+				</anchored>				
 			</sheetcharacteristicbonusvalue>
 			<sheettitle>
 				<anchored>
@@ -207,28 +158,24 @@
 				<center />
 				<static>Endurance</static>
 			</sheettitle>			
-			<!-- INTELLECT-->
-			<sheetcharacteristicvalue name="main_characteristics_intellect_current" source="intellect.current">
+<!-- INTELLECT-->
+			<sheetcharacteristicvalue name="main_characteristics_intellect_current" source="characteristics.intellect.current">
 				<anchored>
 					<to>main_characteristics</to>
 					<offset>185,24</offset>
 			
 				</anchored>
 				<tabtarget>
-					<next>main_characteristics_intellect_bonus</next>
-					<prev>main_characteristics_endurance_bonus</prev>
+					<next>main_characteristics_education_current</next>
+					<prev>main_characteristics_endurance_current</prev>
 				</tabtarget>				
 			</sheetcharacteristicvalue>
-			<sheetcharacteristicbonusvalue name="main_characteristics_intellect_bonus" source="intellect.bonus">
+			<sheetcharacteristicbonusvalue name="main_characteristics_intellect_bonus" source="characteristics.intellect.bonus">
 				<anchored>
 					<to>main_characteristics_intellect_current</to>
 					<position>righthigh</position>
 					<offset>1,0</offset>
-				</anchored>
-				<tabtarget>
-					<next>main_characteristics_education_current</next>
-					<prev>main_characteristics_intellect_current</prev>
-				</tabtarget>				
+				</anchored>			
 			</sheetcharacteristicbonusvalue>
 			<sheettitle>
 				<anchored>
@@ -254,27 +201,23 @@
 				<center />
 				<static>Intellect</static>
 			</sheettitle>
-			<!-- Education-->
-			<sheetcharacteristicvalue name="main_characteristics_education_current" source="education.current">
+<!-- Education-->
+			<sheetcharacteristicvalue name="main_characteristics_education_current" source="characteristics.education.current">
 				<anchored>
 					<to>main_characteristics</to>
 					<offset>241,24</offset>
 				</anchored>
 				<tabtarget>
-					<next>main_characteristics_education_bonus</next>
-					<prev>main_characteristics_intellect_bonus</prev>
+					<next>main_characteristics_social_current</next>
+					<prev>main_characteristics_intellect_current</prev>
 				</tabtarget>				
 			</sheetcharacteristicvalue>
-			<sheetcharacteristicbonusvalue name="main_characteristics_education_bonus" source="education.bonus">
+			<sheetcharacteristicbonusvalue name="main_characteristics_education_bonus" source="characteristics.education.bonus">
 				<anchored>
 					<to>main_characteristics_education_current</to>
 					<position>righthigh</position>
 					<offset>1,0</offset>
-				</anchored>
-				<tabtarget>
-					<next>main_characteristics_social_current</next>
-					<prev>main_characteristics_education_current</prev>
-				</tabtarget>				
+				</anchored>			
 			</sheetcharacteristicbonusvalue>
 			<sheettitle>
 				<anchored>
@@ -301,27 +244,23 @@
 				<static>Education</static>
 			</sheettitle>			
 			
-			<!-- social-->
-			<sheetcharacteristicvalue name="main_characteristics_social_current" source="social.current">
+<!-- Social-->
+			<sheetcharacteristicvalue name="main_characteristics_social_current" source="characteristics.social.current">
 				<anchored>
 					<to>main_characteristics</to>
 					<offset>297,24</offset>
 				</anchored>
 				<tabtarget>
-					<next>main_characteristics_social_bonus</next>
-					<prev>main_characteristics_education_bonus</prev>
+					<next>main_characteristics_psi_current</next>
+					<prev>main_characteristics_education_current</prev>
 				</tabtarget>				
 			</sheetcharacteristicvalue>
-			<sheetcharacteristicbonusvalue name="main_characteristics_social_bonus" source="social.bonus">
+			<sheetcharacteristicbonusvalue name="main_characteristics_social_bonus" source="characteristics.social.bonus">
 				<anchored>
 					<to>main_characteristics_social_current</to>
 					<position>righthigh</position>
 					<offset>1,0</offset>
-				</anchored>
-				<tabtarget>
-					<next>main_characteristics_stance_conservative</next>
-					<prev>main_characteristics_social_current</prev>
-				</tabtarget>				
+				</anchored>				
 			</sheetcharacteristicbonusvalue>
 			<sheettitle>
 				<anchored>
@@ -347,20 +286,50 @@
 				<center />
 				<static>Social</static>
 			</sheettitle>
-			
-<!-- INITIATIVE -->
-			<sheetframe name="combat_init">
-			<!--<bounds>355,2,128,86</bounds>-->
-			<bounds>363,5,120,87</bounds>
-			</sheetframe>
-			<sheetframetitle name="combat_init_title">
+<!-- PSI-->
+			<sheetcharacteristicvalue name="main_characteristics_psi_current" source="characteristics.psionics.current">
 				<anchored>
-					<to>combat_init</to>
+					<to>main_characteristics</to>
+					<offset>353,24</offset>
 				</anchored>
-				<static>Initiative</static>
-			</sheetframetitle>	
+				<tabtarget>
+					<next>main_characteristics_strength_current</next>
+					<prev>main_characteristics_social_current</prev>
+				</tabtarget>				
+			</sheetcharacteristicvalue>
+			<sheetcharacteristicbonusvalue name="main_characteristics_psi_bonus" source="characteristics.psionics.bonus">
+				<anchored>
+					<to>main_characteristics_psi_current</to>
+					<position>righthigh</position>
+					<offset>1,0</offset>
+				</anchored>
+			</sheetcharacteristicbonusvalue>
+			<sheettitle>
+				<anchored>
+					<top>
+						<parent>main_characteristics_psi_current</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>						
+					</top>
+					<left>
+						<parent>main_characteristics_psi_current</parent>
+						<anchor>left</anchor>
+						<offset>-20</offset>
+					</left>
+					<right>
+						<parent>main_characteristics_psi_current</parent>
+						<anchor>right</anchor>
+						<offset>20</offset>
+					</right>
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static>PSI</static>
+			</sheettitle>
 
-<!-- TALENTS -->
+<!-- Special Abilities -->
 			<sheetframe name="talents_talents">
 				<!--<bounds>12,81,351,390</bounds>-->
 				<bounds>14,88,351,-10</bounds>
@@ -403,8 +372,7 @@
 				</anchored>
 				<script>
 					function onInit()
-						createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());
-						createWindowWithClass("charsheet_talents_motivations", window.getDatabaseNode());						
+						createWindowWithClass("charsheet_talents_abilities", window.getDatabaseNode());						
 					end
 				</script>
 			</basewindowlist>
@@ -415,455 +383,39 @@
 				</anchored>
 				<target>talents_talents_talents</target>
 			</scrollbar>
-
-
-
 			
 
-			
-<!-- EXPERIENCE -->
-			<sheetframe name="main_experience">
-				<bounds>363,88,121,94</bounds>
+<!-- INITIATIVE -->
+			<sheetframe name="combat_init">
+			<!--<bounds>355,2,128,86</bounds>-->
+			<!-- <bounds>363,5,120,87</bounds> -->
+			<bounds>363,88,121,94</bounds>
 			</sheetframe>
-			<sheetframetitle name="main_experience_title">
+			<sheetframetitle name="combat_init_title">
 				<anchored>
-					<to>main_experience</to>
+					<to>combat_init</to>
 				</anchored>
-				<static>Experience</static>
-			</sheetframetitle>
-
-			<!-- TOTAL -->
-			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,22</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Total</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_experience_total" source="experience.total">
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,21</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				<tabtarget>
-					<next>main_experience_spent</next>
-					<prev>main_characteristics_stance_reckless</prev>
-				</tabtarget>
-			</sheetnumberfield>
-
-			<!-- SPENT -->
-			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,42</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Spent</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_experience_spent" source="experience.spent">
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,41</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				<tabtarget>
-					<next>main_fortune_maximum</next>
-					<prev>main_experience_total</prev>
-				</tabtarget>
-				<script>
-					local totalnode = nil;
-					
-					function onValueChanged()
-						local totalvalue = totalnode.getValue();
-						local value = getValue();
-						if value == 0 then
-							setColor(zerocolor[1]);					
-						else					
-							setColor(color[1]);
-						end
-						if 0 > value then
-							setValue(0);
-						end
-						if value > totalvalue then
-							setValue(totalvalue);
-						end
-					end
-					
-					function onInit()
-						local windownode = window.getDatabaseNode();
-						totalnode = windownode.getChild("experience.total");
-						onValueChanged();
-					end
-				</script>
-			</sheetnumberfield>
+				<static>Initiative</static>
+			</sheetframetitle>	
 			
-			<!-- REMAINING -->
-			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,62</offset>
-					<size>
-						<width>64</width>
-					</size>
+			<cycler_ability name="inititive.characteristic">
+				<anchored to="combat_init" height="20" width="35">
+					<position>insidetopleft</position>
+					<offset>15,22</offset>
 				</anchored>
-				<static>Remaining</static>
-			</sheetlabel>		
-			<sheetnumbercontrol>
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,61</offset>
-					<size>
-						<width>30</width>
-					</size>
+				<parameters>
+					<defaultlabelres mergerule="replace">dash</defaultlabelres>
+					<labelsres>Str|Dex</labelsres>
+					<values>Strength|Dexterity</values>
+				</parameters>
+			</cycler_ability>
+			<checkbox>
+				<anchored to="inititive.characteristic" height="15" width="15">
+					<top offset="5" />
+					<right offset="20" />
+	
 				</anchored>
-				<disabled />
-				<script>
-					local totalnode = nil;
-					local spentnode = nil;
-					
-					function onUpdate(source)
-						local totalvalue = totalnode.getValue();
-						local spentvalue = spentnode.getValue();
-						setValue(totalvalue - spentvalue);
-						onValueChanged();
-					end
-					
-					function onInit()
-						local windownode = window.getDatabaseNode();
-						totalnode = windownode.getChild("experience.total");
-						totalnode.onUpdate = onUpdate;
-						spentnode = windownode.getChild("experience.spent");
-						spentnode.onUpdate = onUpdate;
-						onUpdate(nil);
-						onValueChanged();
-					end
-				</script>
-			</sheetnumbercontrol>
-			
-			<!-- LEVEL -->
-<!--			<sheetlabel>
-				<anchored>
-					<to>main_experience</to>
-					<offset>13,82</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Level</static>
-			</sheetlabel>		
-			<sheetnumbercontrol>
-				<anchored>
-					<to>main_experience</to>
-					<offset>83,81</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				<disabled />
-				<script>
-					local totalnode = nil;
-					
-					function onUpdate(source)
-						local totalvalue = totalnode.getValue();
-						setValue(math.floor(totalvalue / 100) + 1);
-						onValueChanged();
-					end
-					
-					function onInit()
-						local windownode = window.getDatabaseNode();
-						totalnode = windownode.getChild("experience.total");
-						totalnode.onUpdate = onUpdate;
-						onUpdate(nil);
-						onValueChanged();
-					end
-				</script>
-			</sheetnumbercontrol>-->
-
-
-<!-- OBLIGATION -->
-			<sheetframe name="main_obligation">
-				<anchored to="main_experience" width="121" height="54">
-					<top anchor="bottom" relation="relative" offset="-4" />
-					<left />
-				</anchored>
-				<!--<bounds>363,216,121,50</bounds>-->
-			</sheetframe>
-			<sheetframetitle name="main_obligation_title">
-				<anchored>
-					<to>main_obligation</to>
-				</anchored>
-				<static>Obligation</static>
-			</sheetframetitle>
-
-			<!-- TOTAL -->
-			<sheetlabel name="main_obligation_total_label">
-				<anchored>
-					<to>main_obligation</to>
-					<offset>13,20</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Total</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_obligation_total" source="obligation.total">
-				<anchored>
-					<to>main_obligation</to>
-					<offset>83,21</offset>
-					<size>
-						<width>30</width>
-					</size>
-					<script>
-						function updateTotal()
-							Debug.console("Calling main_obligation_total.update()");
-						end
-					</script>
-				</anchored>				
-			</sheetnumberfield>		
-
-<!-- DUTY -->
-			<sheetframe name="main_duty">
-				<anchored to="main_experience" width="121" height="54">
-					<top anchor="bottom" relation="relative" offset="-4" />
-					<left />
-				</anchored>
-			</sheetframe>
-			<sheetframetitle name="main_duty_title">
-				<anchored>
-					<to>main_duty</to>
-				</anchored>
-				<static>Duty</static>
-			</sheetframetitle>
-
-			<!-- TOTAL -->
-			<sheetlabel name="main_duty_total_label">
-				<anchored>
-					<to>main_duty</to>
-					<offset>13,20</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Total</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_duty_total" source="duty.total">
-				<anchored>
-					<to>main_duty</to>
-					<offset>83,21</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>				
-			</sheetnumberfield>	
-
-<!-- MORALITY -->
-			<sheetframe name="main_morality">
-				<anchored to="main_experience" width="121" height="108">
-					<top anchor="bottom" relation="relative" offset="-4" />
-					<left />
-				</anchored>
-			</sheetframe>
-			<sheetframetitle name="main_morality_title">
-				<anchored>
-					<to>main_morality</to>
-				</anchored>
-				<static>Morality</static>
-			</sheetframetitle>
-
-			<!-- TOTAL -->
-			<sheetlabel name="main_morality_total_label">
-				<anchored>
-					<to>main_morality</to>
-					<offset>13,20</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Total</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_morality_total" source="morality.total">
-				<anchored>
-					<to>main_morality</to>
-					<offset>83,21</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>				
-			</sheetnumberfield>	
-
-			<!-- CONFLICT -->
-			<sheetlabel name="main_morality_conflict_label">
-				<anchored>
-					<to>main_morality</to>
-					<offset>13,42</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<color>880000</color>
-				<static>Conflict</static>
-			</sheetlabel>
-			<sheetnumberfield name="main_morality_conflict" source="morality.conflict">
-				<anchored>
-					<to>main_morality</to>
-					<offset>83,43</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>		
-				<color>880000</color>
-				<tooltip>
-					<text>Track the current session conflict here</text>
-				</tooltip>				
-			</sheetnumberfield>	
-
-			<!-- Morality Triggered? -->
-			<sheetlabel name="main_morality_triggered_label">
-				<anchored>
-					<to>main_morality</to>
-					<offset>13,62</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<!--<color>880000</color >-->
-				<static>Triggered?</static>
-			</sheetlabel>
-			<checkbox name="main_morality_istriggered" source="istriggered">
-				<anchored>
-					<to>main_morality</to>
-					<position>insidetopleft</position>					
-					<offset>88,60</offset>
-					<size>
-						<width>20</width>
-						<height>20</height>
-					</size>
-				</anchored>				
-				<tooltip>
-					<text>Morality has been triggered for this session</text>
-				</tooltip>
-			</checkbox>	
-
-			<!-- Morality Engaged? -->
-			<sheetlabel name="main_morality_engaged_label">
-				<anchored>
-					<to>main_morality</to>
-					<offset>13,80</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<!--<color>880000</color >-->
-				<static>Engaged?</static>
-			</sheetlabel>
-			<checkbox name="main_morality_isengaged" source="isengaged">
-				<anchored>
-					<to>main_morality</to>
-					<position>insidetopleft</position>					
-					<offset>88,78</offset>
-					<size>
-						<width>20</width>
-						<height>20</height>
-					</size>
-				</anchored>				
-				<tooltip>
-					<text>Triggered morality has been engaged for this session</text>
-				</tooltip>
-			</checkbox>		
-			
-<!--Force Rating Section - thanks to Archamus for this-->			
-			<sheetframe name="force_rating">
-				<bounds>363,378,121,93</bounds>
-			</sheetframe>
-			<sheetframetitle name="force_rating_title">
-				<anchored>
-					<to>force_rating</to>
-				</anchored>
-				<static>Force Rating</static>
-			</sheetframetitle>
-
-			<!-- TOTAL -->
-			<sheetlabel name="force_rating_total_label">	<anchored>
-					<to>force_rating</to>
-					<offset>13,22</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Total</static>
-			</sheetlabel>
-			<sheetnumberfield name="force_rating_total" source="force.total">
-				<anchored>
-					<to>force_rating</to>
-					<offset>83,21</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				 <tooltip>	
-					<textres>tooltip_force_rating</textres>					
-				 </tooltip>					
-			</sheetnumberfield>
-
-			<!-- Committed -->
-			<sheetlabel name="force_rating_spent_label">
-				<anchored>
-					<to>force_rating</to>
-					<offset>13,42</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Used</static>
-			</sheetlabel>
-			<sheetnumberfield name="force_rating_spent" source="force.spent">
-				<anchored>
-					<to>force_rating</to>
-					<offset>83,41</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				 <tooltip>	
-					<textres>tooltip_force_comitted</textres>					
-				 </tooltip>				
-			</sheetnumberfield>
-			
-			<!-- REMAINING -->
-			<sheetlabel name="main_characteristics_force_current_label">
-				<anchored>
-					<to>force_rating</to>
-					<offset>13,62</offset>
-					<size>
-						<width>64</width>
-					</size>
-				</anchored>
-				<static>Available</static>
-			</sheetlabel>	
-
-			<sheetforcevalue name="main_characteristics_force_current" source="force.current">
-				<anchored>
-					<to>force_rating</to>
-					<offset>83,61</offset>
-					<size>
-						<width>30</width>
-					</size>
-				</anchored>
-				 <tooltip>	
-					<textres>tooltip_force_available</textres>					
-				 </tooltip>				
-			</sheetforcevalue>			
-
+			</checkbox>
 		</sheetdata>
 	</windowclass>
 </root>

@@ -12,6 +12,7 @@
 			</anchored>
 			<nodrag />
 			<nodrop />
+			<readonly />
 		</sheetnumberfield>	
 	</template>
 	
