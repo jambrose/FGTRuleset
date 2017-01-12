@@ -18,8 +18,9 @@
 	<!--<script name="LocationManager" file="managers/locationmanager.lua" />-->
 	<script name="NoteManager" file="managers/notemanager.lua" />		
 	<script name="TokenManager" file="managers/tokenmanager.lua" />
+	<script name="ActionsManager" file="managers/actionmanager.lua" />
 	<script name="AbilityManager" file="managers/abilitymanager.lua" />
-	<script name="ActionManager" file="managers/actionmanager.lua" />
+	
 	<script name="ConditionManager" file="managers/conditionmanager.lua" />				
 	<!-- <script name="PetManager" file="managers/petmanager.lua" />				 -->
 	<!-- <script name="HorseManager" file="managers/horsemanager.lua" /> -->
@@ -33,7 +34,7 @@
 	
 	<!-- <script name="MinionManager" file="managers/minionManager.lua" /> -->
 	<script name="PlayerDBManager" file="managers/playerdbmanager.lua" />
-	<script name="GameSystem" file="managers/managergamesystem.lua" />
+	<script name="GameSystem" file="managers/gamesystemmanager.lua" />
 	playerdbmanager
 
 </root>

@@ -1,12 +1,12 @@
--- 
+	-- 
 -- Please see the license.html file included with this distribution for 
 -- attribution and copyright information.
 --
 -- From action_ability_manager
 
 function onInit()
-	ActionsManager.registerModHandler("ability", modRoll);
-	ActionsManager.registerResultHandler("ability", onRoll);
+	ActionsManager.registerModHandler("charasteric", modRoll);
+	ActionsManager.registerResultHandler("charasteric", onRoll);
 end
 
 function getRoll(rActor, sAbilityStat, nTargetDC, bSecretRoll)
