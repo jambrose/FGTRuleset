@@ -30,6 +30,7 @@
 	<includefile source="classes/common/powernumberfield.xml" />
 	<includefile source="classes/common/progresstracker.xml" />
 	<includefile source="classes/common/raceicon.xml" />
+	<includefile source="classes/common/radiobutton.xml" />
 	<includefile source="classes/common/rangecontrol.xml" />
 	<includefile source="classes/common/rechargenumberfield.xml" />
 	<includefile source="classes/common/scrollbar.xml" />
